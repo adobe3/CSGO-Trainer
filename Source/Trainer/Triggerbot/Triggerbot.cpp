@@ -16,7 +16,7 @@ void Trainer::Triggerbot()
 			if (!Game::TeamCheck(crosshairId - 1))
 				continue;
 
-			if (crosshairId > 0 && crosshairId < 32 && GetAsyncKeyState(Trainer::Settings::triggerbotHotkey))
+			if (GetAsyncKeyState(Trainer::Settings::triggerbotHotkey) && crosshairId > 0 && crosshairId < 32)
 			{
 				std::this_thread::sleep_for(std::chrono::milliseconds(Trainer::Settings::triggerbotDelay));
 

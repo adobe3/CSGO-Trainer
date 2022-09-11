@@ -1,11 +1,13 @@
 # CSGO-Trainer
 Lightweight & modern trainer for Counter-Strike: Global Offensive
+
 ## Features:
 * Easily expandable codebase
 * Direct2D Graphics
 * Compile time string obfuscation
+* External / Internal framework, operating inside the process space of Windows Media Player
 * Various cheats such as 2D Boxes, Triggerbot, & more.
-* Great preformance with 0.3% average CPU usage
+* Optimal preformance with less than 1.0% average CPU usage
 
 ## Compilation & Runtime Instructions:
 * Install [DirectX Software Development Kit](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6812)
