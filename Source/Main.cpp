@@ -3,7 +3,7 @@
 #include "Graphics/Graphics.h"
 #include "Utilities/Utilities.h"
 
-DWORD WINAPI Initialize(LPVOID lpParam)
+DWORD WINAPI Initialize()
 {
     FILE* file;
 
@@ -20,11 +20,7 @@ DWORD WINAPI Initialize(LPVOID lpParam)
     /* Trainer initialization */
     Trainer::Initialize();
 
-    while (!GetAsyncKeyState(VK_END) & 1)
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-    /* Unload trainer */
-    FreeLibraryAndExitThread(static_cast<HMODULE>(lpParam), EXIT_SUCCESS);
+    return TRUE;
 }
 
 BOOL APIENTRY DllMain(HMODULE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
@@ -33,14 +29,7 @@ BOOL APIENTRY DllMain(HMODULE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
     {
         DisableThreadLibraryCalls(hinstDLL);
 
-        const HANDLE initializeThread = CreateThread(
-            nullptr,
-            NULL,
-            Initialize,
-            hinstDLL,
-            NULL,
-            nullptr
-        );
+        HANDLE initializeThread = CreateThread(nullptr,NULL,(LPTHREAD_START_ROUTINE)Initialize,hinstDLL,NULL,nullptr);
 
         if (initializeThread)
             CloseHandle(initializeThread);

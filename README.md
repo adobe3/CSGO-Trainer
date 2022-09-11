@@ -33,6 +33,5 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Add dynamic resolution support
 * Rewrite Esp2D.cpp, get entityHead by reading bone matrix
 * Rewrite WorldToScreen function
-* Fix unload hotkey
 * View angle aimbot
 * More 2D drawing options such as heads, bones, distance, health, & name
