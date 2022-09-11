@@ -6,8 +6,7 @@ Features:
     - Easily expandable codebase
     - Direct2D Graphics
     - Compile time string obfuscation
-    - Various cheats such as 2D ESP, Aimbot, Triggerbot, & more.
-    - Automatic updater via signature scanning
+    - Various cheats such as 2D Boxes, Triggerbot, & more.
     - Great preformance with 0.3% average CPU usage
 Compilation & Runtime Instructions:
     - Install "DirectX Software Development Kit"
@@ -30,7 +29,7 @@ Credits:
 #include "Graphics/Graphics.h"
 #include "Utilities/Utilities.h"
 
-DWORD WINAPI Setup(LPVOID lpParam)
+DWORD WINAPI Initialize(LPVOID lpParam)
 {
     FILE* file;
 
@@ -47,7 +46,6 @@ DWORD WINAPI Setup(LPVOID lpParam)
     /* Trainer initialization */
     Trainer::Initialize();
 
-    // THIS DOESNT WORK FIX !!! test
     while (!GetAsyncKeyState(VK_END) & 1)
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
@@ -61,17 +59,17 @@ BOOL APIENTRY DllMain(HMODULE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
     {
         DisableThreadLibraryCalls(hinstDLL);
 
-        const HANDLE hThread = CreateThread(
+        const HANDLE initializeThread = CreateThread(
             nullptr,
             NULL,
-            Setup,
+            Initialize,
             hinstDLL,
             NULL,
             nullptr
         );
 
-        if (hThread)
-            CloseHandle(hThread);
+        if (initializeThread)
+            CloseHandle(initializeThread);
     }
 
     return TRUE;
