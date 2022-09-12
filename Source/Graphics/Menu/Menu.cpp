@@ -47,6 +47,8 @@ void Graphics::DrawMenu()
 				DrawString((std::string)skCrypt("<BOTTOM>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
 			if (Trainer::Settings::snaplines2D == 2)
 				DrawString((std::string)skCrypt("<TOP>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
+			if (Trainer::Settings::snaplines2D == 3)
+				DrawString((std::string)skCrypt("<CIRCLE>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		/* Triggerbot */
@@ -113,78 +115,84 @@ void Graphics::MenuHandler()
 
 		switch (Graphics::activeItem)
 		{
-		case 3: /* 2D Boxes */
-			if (GetAsyncKeyState(VK_RIGHT) & 1)
-			{
-				Trainer::Settings::boxes2D++;
+			case 3: /* 2D Boxes */
+				if (GetAsyncKeyState(VK_RIGHT) & 1)
+				{
+					Trainer::Settings::boxes2D++;
 
-				if (Trainer::Settings::boxes2D == 2)
-					Trainer::Settings::boxes2D = 1;
-			}
+					if (Trainer::Settings::boxes2D == 2)
+						Trainer::Settings::boxes2D = 1;
+				}
 
-			if (GetAsyncKeyState(VK_LEFT) & 1)
-			{
-				Trainer::Settings::boxes2D--;
+				if (GetAsyncKeyState(VK_LEFT) & 1)
+				{
+					Trainer::Settings::boxes2D--;
 
-				if (Trainer::Settings::boxes2D == -1)
-					Trainer::Settings::boxes2D = 0;
-			}
-			break;
-		case 2: /* 2D Snaplines */
-			if (GetAsyncKeyState(VK_RIGHT) & 1)
-			{
-				Trainer::Settings::snaplines2D++;
+					if (Trainer::Settings::boxes2D == -1)
+						Trainer::Settings::boxes2D = 0;
+				}
+				break;
 
-				if (Trainer::Settings::snaplines2D == 3)
-					Trainer::Settings::snaplines2D = 2;
-			}
+			case 2: /* 2D Snaplines */
+				if (GetAsyncKeyState(VK_RIGHT) & 1)
+				{
+					Trainer::Settings::snaplines2D++;
 
-			if (GetAsyncKeyState(VK_LEFT) & 1)
-			{
-				Trainer::Settings::snaplines2D--;
+					if (Trainer::Settings::snaplines2D == 4)
+						Trainer::Settings::snaplines2D = 3;
+				}
 
-				if (Trainer::Settings::snaplines2D == -1)
-					Trainer::Settings::snaplines2D = 0;
-			}
-		case 1: /* Triggerbot */
-			if (GetAsyncKeyState(VK_RIGHT) & 1)
-			{
-				Trainer::Settings::triggerbot++;
+				if (GetAsyncKeyState(VK_LEFT) & 1)
+				{
+					Trainer::Settings::snaplines2D--;
 
-				if (Trainer::Settings::triggerbot == 2)
-					Trainer::Settings::triggerbot = 1;
-			}
+					if (Trainer::Settings::snaplines2D == -1)
+						Trainer::Settings::snaplines2D = 0;
+				}
+				break;
 
-			if (GetAsyncKeyState(VK_LEFT) & 1)
-			{
-				Trainer::Settings::triggerbot--;
+			case 1: /* Triggerbot */
+				if (GetAsyncKeyState(VK_RIGHT) & 1)
+				{
+					Trainer::Settings::triggerbot++;
 
-				if (Trainer::Settings::triggerbot == -1)
-					Trainer::Settings::triggerbot = 0;
-			}
-		case 0: /* Triggerbot Delay */
-			if (GetAsyncKeyState(VK_RIGHT) & 1)
-			{
-				Trainer::Settings::triggerbotDelay++;
+					if (Trainer::Settings::triggerbot == 2)
+						Trainer::Settings::triggerbot = 1;
+				}
 
-				if (Trainer::Settings::triggerbotDelay == 301)
-					Trainer::Settings::triggerbotDelay = 300;
-			}
+				if (GetAsyncKeyState(VK_LEFT) & 1)
+				{
+					Trainer::Settings::triggerbot--;
 
-			if (GetAsyncKeyState(VK_LEFT) & 1)
-			{
-				Trainer::Settings::triggerbotDelay--;
+					if (Trainer::Settings::triggerbot == -1)
+						Trainer::Settings::triggerbot = 0;
+				}
+				break;
 
-				if (Trainer::Settings::triggerbotDelay == -1)
-					Trainer::Settings::triggerbotDelay = 0;
-			}
-			break;
-		default: /* If user goes over final menu selection, reset it */
-			if (Graphics::activeItem == 4)
-				Graphics::activeItem = 0;
+			case 0: /* Triggerbot Delay */
+				if (GetAsyncKeyState(VK_RIGHT) & 1)
+				{
+					Trainer::Settings::triggerbotDelay++;
 
-			else if(Graphics::activeItem == -1)
-				Graphics::activeItem = 3;
+					if (Trainer::Settings::triggerbotDelay == 301)
+						Trainer::Settings::triggerbotDelay = 300;
+				}
+
+				if (GetAsyncKeyState(VK_LEFT) & 1)
+				{
+					Trainer::Settings::triggerbotDelay--;
+
+					if (Trainer::Settings::triggerbotDelay == -1)
+						Trainer::Settings::triggerbotDelay = 0;
+				}
+				break;
+
+			default: /* If user goes over final menu selection, reset it */
+				if (Graphics::activeItem == 4)
+					Graphics::activeItem = 0;
+
+				else if(Graphics::activeItem == -1)
+					Graphics::activeItem = 3;
 		}
 	}
 }
