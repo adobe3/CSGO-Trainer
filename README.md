@@ -21,7 +21,7 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * [coltonon](https://github.com/coltonon) for [D2DOverlay](https://github.com/coltonon/D2DOverlay)
 * [skadro-official](https://github.com/skadro-official) for [skCrypter](https://github.com/skadro-official/skCrypter)
 
-## Screenshots:
+## Media:
 
 ## TODO:
 * Automatic updater via pattern scanning
