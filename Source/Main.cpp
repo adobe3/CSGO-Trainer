@@ -5,10 +5,14 @@
 
 DWORD WINAPI Initialize()
 {
-    FILE* file;
+    /* Hide Windows Media Player window */
+    ShowWindow(FindWindowA(NULL, skCrypt("Windows Media Player")), SW_HIDE);
 
+    /* Open our console window */
+    FILE* file;
     AllocConsole();
     freopen_s(&file, "CONOUT$", "w", stdout);
+    SetConsoleTitleA(skCrypt("CSGO-Trainer"));
 
     /* Game initialization */
     Game::Initialize(Game::handle, Game::processId, Game::client, Game::engine);

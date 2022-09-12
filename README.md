@@ -14,7 +14,7 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Compile CSGO-Trainer.sln as Release/x86
 * Run Counter-Strike: Global Offensive with "-insecure" flag
 * Set the games display as "Fullscreen Windowed" & "1920x1080"
-* Run CSGO-Trainer.bat as administrator
+* Run CSGO-Trainer.bat
 * Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle display with INSERT.
 
 ## Credits:
@@ -27,6 +27,7 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Automatic updater via pattern scanning
 * Rewrite rendering code
 * Memory caching
+* Fix inline variable stuff
 * Hotkey support for triggerbot & aimbot using virtual-key codes
 * Add dynamic resolution support
 * Rewrite Esp2D.cpp, get entityHead by reading bone matrix
