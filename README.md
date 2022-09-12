@@ -17,13 +17,11 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Run CSGO-Trainer.bat as administrator
 * Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle display with INSERT.
 
-## Improvements:
-* Compile with [Obfuscator-LLVM](https://www.unknowncheats.me/forum/anti-cheat-bypass/500042-ollvm-13-llvm-obfuscator-vs2022-compatible.html) to change the programs signature
-* Use a manually mapped driver to preform memory operations
-
 ## Credits:
 * [coltonon](https://github.com/coltonon) for [D2DOverlay](https://github.com/coltonon/D2DOverlay)
 * [skadro-official](https://github.com/skadro-official) for [skCrypter](https://github.com/skadro-official/skCrypter)
+
+## Screenshots:
 
 ## TODO:
 * Automatic updater via pattern scanning
