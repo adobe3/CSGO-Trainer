@@ -29,7 +29,7 @@ BOOL APIENTRY DllMain(HMODULE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
     {
         DisableThreadLibraryCalls(hinstDLL);
 
-        HANDLE initializeThread = CreateThread(nullptr,NULL,(LPTHREAD_START_ROUTINE)Initialize,hinstDLL,NULL,nullptr);
+        HANDLE initializeThread = CreateThread(nullptr, NULL, (LPTHREAD_START_ROUTINE)Initialize, hinstDLL, NULL, nullptr);
 
         if (initializeThread)
             CloseHandle(initializeThread);

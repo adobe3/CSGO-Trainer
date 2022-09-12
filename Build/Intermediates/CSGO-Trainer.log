@@ -1,7 +1,9 @@
-﻿  Main.cpp
+﻿  Game.cpp
+  Main.cpp
+  Memory.cpp
   Generating code
-  7 of 378 functions ( 1.9%) were compiled, the rest were copied from previous compilation.
-    4 functions were new in current compilation
+  39 of 384 functions (10.2%) were compiled, the rest were copied from previous compilation.
+    25 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   CSGO-Trainer.vcxproj -> C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Build\IPHLPAPI.dll

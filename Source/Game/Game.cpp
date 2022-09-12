@@ -9,7 +9,10 @@ bool Game::Initialize(HANDLE& handle, DWORD& processId, DWORD& client, DWORD& en
 	engine = Utilities::GetModuleAddress(processId, skCrypt(L"engine.dll"));
 
 	if (!client || !engine)
-		Utilities::LogErrorMB(skCrypt("Failed to load specified modules, please make sure the application is running."));
+		Utilities::LogErrorMB(skCrypt("Failed to locate specified modules, please make sure the target application is running."));
+
+	if (!Game::Offsets::Update())
+		Utilities::LogErrorMB(skCrypt("Failed to update game offsets."));
 
 	return true;
 }

@@ -7,7 +7,7 @@ DWORD Utilities::GetProcessId(const char* windowTitle)
     HWND hwnd = FindWindowA(NULL, windowTitle);
 
     if (!hwnd)
-        Utilities::LogErrorMB(skCrypt("Failed to locate the process identifier, please make sure the application is running."));
+        Utilities::LogErrorMB(skCrypt("Failed to locate process identifier, please make sure the target application is running."));
 
     GetWindowThreadProcessId(hwnd, &processId);
 
