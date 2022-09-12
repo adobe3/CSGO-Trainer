@@ -1,7 +1,6 @@
 #include "../Trainer.h"
 #include "../../Utilities/Utilities.h"
 #include "../../Graphics/Graphics.h"
-#include <math.h>
 
 void Trainer::Esp2D() 
 {
@@ -41,20 +40,17 @@ void Trainer::Esp2D()
 
 			/* 2D Snaplines */
 			if (Trainer::Settings::snaplines2D == 1) /* BOTTOM */
-			{
 				DrawLine(1920 / 2, 1080, x, y, 1.0, 1.0, 0.0, 0.0, 1.0);
-			} else if (Trainer::Settings::snaplines2D == 2) 
-			{ /* TOP */
-				DrawLine(1920 / 2, 0, entityHead2D.x, entityHead2D.y, 1.0, 1.0, 0.0, 0.0, 1.0);
-			} else if (Trainer::Settings::snaplines2D == 3) /* Crosshair */
-			{ 
-				float radius = 30.0;					 // Center circle's radius
-				float x1 = static_cast<float>(1920) / 2; // Center X
-				float y1 = static_cast<float>(1080) / 2; // Center Y
+			else if (Trainer::Settings::snaplines2D == 2) /* MIDDLE */
+			{
+				float radius = 50.0;					 // Center circle's radius
+				float x1 = 1920 / 2;					 // Center X
+				float y1 = 1080 / 2;					 // Center Y
 				float x2 = entityHead2D.x;				 // Entity X
 				float y2 = entityHead2D.y;				 // Entity Y
 				float a = y2 - y1;						 // Distance between Entity Y and Center Y
 				float b = x2 - x1;						 // Distance between Entity X and Center X
+				float c = sqrt(a * a + b * b);			 // Hypotenuse of entity triangle
 				float x3 = 0.0;
 				float y3 = 0.0;
 				float angle = atan(a / b);				 // Angle degrees from Center + Entity's right triangle
@@ -64,14 +60,16 @@ void Trainer::Esp2D()
 					x3 = radius * cos(angle) + x1;       // Calculate the circle's X position (radius * angle's cosine + center x)
 					y3 = radius * sin(angle) + y1;       // Calculate the circle's Y position (radius * angle's sine + center x)
 				}
-				else 
+				else
 				{
 					x3 = radius * (-cos(angle)) + x1;
 					y3 = radius * (-sin(angle)) + y1;
 				}
 
-				DrawCircle(x1, y1, radius, 1, 1.0, 1.0, 0.0, 0.0, 1.0); // Draw center circle at Center X, Center Y
-				DrawLine(x2, y2, x3, y3, 1.0, 1.0, 0.0, 0.0, 1.0);		// Draw line from Entity X, Entity Y to Circle X, Circle Y
-			}
+				if(c >= radius)												// If entity is not inside of circle radius
+					DrawLine(x2, y2, x3, y3, 1.0, 1.0, 0.0, 0.0, 1.0);		// Draw line from Entity X, Entity Y to Circle X, Circle Y
+			} 
+			else if (Trainer::Settings::snaplines2D == 3) /* TOP */
+				DrawLine(1920 / 2, 0, entityHead2D.x, entityHead2D.y, 1.0, 1.0, 0.0, 0.0, 1.0);
 		}
 }

@@ -13,6 +13,8 @@
 #include <fstream>
 #include <comdef.h>
 #include <ctime>
+#include <math.h>
+#include <cmath>
 
 #include "../Dependencies/skCrypter/skCrypter.h"
 

@@ -12,7 +12,7 @@ namespace Trainer
 		inline bool menu = true;
 
 		inline int boxes2D = 0; /* 0 OFF, 1 ON */
-		inline int snaplines2D = 0; /* 0 OFF, 1 BOTTOM, 2 TOP, 3 CIRCLE */
+		inline int snaplines2D = 0; /* 0 OFF, 1 BOTTOM, 2 MIDDLE, 3 TOP */
 
 		inline int triggerbot = 0; /* 0 OFF, 1 ON */
 		inline int triggerbotDelay = 0; /* 0ms - 300ms */
