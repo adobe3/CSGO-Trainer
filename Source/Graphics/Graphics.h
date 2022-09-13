@@ -10,7 +10,7 @@ namespace Graphics
 	void DrawMenu();
 	void MenuHandler();
 
-	inline int activeItem = 3;
+	inline int activeItem = 5;
 
 	/* Rendering */
 }

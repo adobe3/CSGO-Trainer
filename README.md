@@ -12,8 +12,9 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 ## Compilation & Runtime Instructions:
 * Install [DirectX Software Development Kit](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6812)
 * Compile CSGO-Trainer.sln as Release/x86
-* Run Counter-Strike: Global Offensive with "-insecure -noborder" launch options
-* Run CSGO-Trainer.bat
+* Run Counter-Strike: Global Offensive with "-insecure" launch option
+* Set the games display mode as "Fullscreen Windowed"
+* Run CSGO-Trainer.bat as administrator
 * Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle display with INSERT
 
 ## Credits:
@@ -29,4 +30,4 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Fix inline variable stuff
 * Hotkey support for triggerbot & aimbot using virtual-key codes
 * View angle aimbot
-* More 2D drawing options such as heads, bones, distance, health, & name
+* More 2D drawing options such as distance & name

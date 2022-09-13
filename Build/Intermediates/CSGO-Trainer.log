@@ -1,18 +1,13 @@
-﻿  Esp2D.cpp
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(39,95): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(44,75): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(45,76): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(50,90): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(50,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(50,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(54,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(55,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(77,54): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(80,97): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(80,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Menu.cpp
+C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Graphics\Menu\Menu.cpp(131,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Graphics\Menu\Menu.cpp(132,70): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Graphics\Menu\Menu.cpp(133,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Graphics\Menu\Menu.cpp(139,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Graphics\Menu\Menu.cpp(140,70): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Graphics\Menu\Menu.cpp(141,77): warning C4305: 'argument': truncation from 'double' to 'float'
   Generating code
-  2 of 420 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
+  77 of 440 functions (17.5%) were compiled, the rest were copied from previous compilation.
+    32 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   CSGO-Trainer.vcxproj -> C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Build\IPHLPAPI.dll

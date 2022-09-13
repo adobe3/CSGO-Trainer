@@ -36,8 +36,6 @@ void Trainer::Esp2D()
 			float height = entityHead2D.y - entityOrigin2D.y;
 			float width = height / 2.4f;
 
-			DrawCircle(entityHead2D.x, entityHead2D.y, 0.1f - width / 2, 0.7, 1.0, 0.0, 0.0, 1.0, false);
-
 			/* 2D Boxes */
 			if (Trainer::Settings::boxes2D == 1)
 			{
@@ -51,8 +49,8 @@ void Trainer::Esp2D()
 			else if (Trainer::Settings::snaplines2D == 2) /* MIDDLE */
 			{
 				float radius = 50.0;					 // Center circle's radius
-				float x1 = Graphics::gameWidth / 2;		 // Center X
-				float y1 = Graphics::gameHeight / 2;	 // Center Y
+				float x1 = static_cast<float>(Graphics::gameWidth / 2);			// Center X
+				float y1 = static_cast<float>(Graphics::gameHeight / 2);		// Center Y
 				float x2 = entityHead2D.x;				 // Entity X
 				float y2 = entityHead2D.y;				 // Entity Y
 				float a = y2 - y1;						 // Distance between Entity Y and Center Y
@@ -78,5 +76,23 @@ void Trainer::Esp2D()
 			} 
 			else if (Trainer::Settings::snaplines2D == 3) /* TOP */
 				DrawLine(Graphics::gameWidth / 2, 0, entityHead2D.x, entityHead2D.y, 0.7, 1.0, 0.0, 0.0, 1.0);
+
+			/* 2D Healthbars */
+			if (Trainer::Settings::healthbars2D == 1) 
+			{
+				int entityHealth = Memory::Read<int>(localEntity + Game::Offsets::m_iHealth);
+				float healthFrac = static_cast<float>(entityHealth) / 100;
+
+				DrawBox(x - width / 1.7, y, height / 75.f, height, 0.7, 0.0, 0.0, 0.0, 0.4, true);
+				DrawBox(x - width / 1.7, y, height / 75.f, healthFrac * height, 0.7, 1 - healthFrac, healthFrac, 0.0, 1.0, true);
+				DrawBox(x - width / 1.7, y, height / 75.f, height, 0.7, 0.0, 0.0, 0.0, 0.4, false);
+			}
+
+			/* 2D Heads */
+			if (Trainer::Settings::heads2D == 1)
+			{
+				DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, 0.7, 1.0, 0.0, 0.0, 0.1, true);
+				DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, 0.7, 1.0, 0.0, 0.0, 1.0, false);
+			}
 		}
 }
