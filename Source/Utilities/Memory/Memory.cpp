@@ -1,20 +1,22 @@
-#include "../Utilities.h"
+#include "Memory.h"
+#include "../Logging/Logging.h"
+#include "../../Game/Game.h"
 
-DWORD Utilities::GetProcessId(const char* windowTitle) 
+DWORD Memory::GetProcessId(const char* windowTitle) 
 {
     DWORD processId = 0;
 
     HWND hwnd = FindWindowA(NULL, windowTitle);
 
     if (!hwnd)
-        Utilities::LogErrorMB(skCrypt("Failed to locate process identifier, please make sure the target application is running."));
+        Logging::LogErrorMB(skCrypt("Failed to locate process identifier, please make sure the target application is running."));
 
     GetWindowThreadProcessId(hwnd, &processId);
 
     return processId;
 }
 
-uintptr_t Utilities::GetModuleAddress(DWORD processId, const wchar_t* moduleName) 
+uintptr_t Memory::GetModuleAddress(DWORD processId, const wchar_t* moduleName) 
 {
     uintptr_t modBaseAddr = 0;
 
@@ -41,12 +43,12 @@ uintptr_t Utilities::GetModuleAddress(DWORD processId, const wchar_t* moduleName
     return modBaseAddr;
 }
 
-void Utilities::GetWindow(const char* windowTitle, HWND& hwnd, int& width, int& height, int& x, int& y) 
+void Memory::GetWindow(const char* windowTitle, HWND& hwnd, int& width, int& height, int& x, int& y) 
 {
     hwnd = FindWindowA(NULL, windowTitle);
 
     if (!hwnd)
-        Utilities::LogErrorMB(skCrypt("Failed to locate the target window, please make sure the application is running."));
+        Logging::LogErrorMB(skCrypt("Failed to locate the target window, please make sure the application is running."));
 
     RECT RECT;
     GetWindowRect(hwnd, &RECT);

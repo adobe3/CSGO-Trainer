@@ -1,7 +1,6 @@
 #include "Stdafx.h"
 #include "Game/Game.h"
 #include "Graphics/Graphics.h"
-#include "Utilities/Utilities.h"
 
 DWORD WINAPI Initialize()
 {
@@ -18,8 +17,7 @@ DWORD WINAPI Initialize()
     Game::Initialize(Game::handle, Game::processId, Game::client, Game::engine);
 
     /* Graphics initialization */
-    DirectOverlaySetOption(D2DOV_FONT_CALIBRI | D2DOV_REQUIRE_FOREGROUND);
-    DirectOverlaySetup(drawLoop, FindWindowA(NULL, skCrypt("Counter-Strike: Global Offensive - Direct3D 9")));
+    Graphics::Initialize();
 
     /* Trainer initialization */
     Trainer::Initialize();

@@ -1,6 +1,6 @@
-#include "../Utilities.h"
+#include "Math.h"
 
- Utilities::Vector3 Utilities::WorldToScreen(const struct Vector3 pos, struct view_matrix_t matrix) 
+ Math::Vector3 Math::WorldToScreen(const struct Vector3 pos, struct view_matrix_t matrix) 
  {
     Vector3 out;
     float _x = matrix.matrix[0] * pos.x + matrix.matrix[1] * pos.y + matrix.matrix[2] * pos.z + matrix.matrix[3];
@@ -14,10 +14,10 @@
     GetWindowRect(FindWindowA(NULL, skCrypt("Counter-Strike: Global Offensive - Direct3D 9")), &rect);
 
     int width = rect.right - rect.left;
-    int height = rect.bottom + rect.left;
+    int height = rect.bottom - rect.top;
 
-    out.x = width * .5f;
-    out.y = height * .5f;
+    out.x = width / 2.f;
+    out.y = height / 2.f;
 
     out.x += 0.5f * _x * width + 0.5f;
     out.y -= 0.5f * _y * height + 0.5f;

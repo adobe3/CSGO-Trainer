@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Stdafx.h"
+#include "../Utilities/Math/Math.h"
 
 namespace Game 
 {
@@ -9,6 +10,7 @@ namespace Game
 	DWORD GetLocalEntity(int i);
 	bool ValidateEntity(int i);
 	bool TeamCheck(int i);
+	Math::Vector3 GetEntityBone(DWORD localEntity, int boneId);
 
 	inline HANDLE handle;
 	inline DWORD processId;
@@ -28,5 +30,6 @@ namespace Game
 		inline DWORD dwViewMatrix = 0x4DCF234;
 		inline DWORD m_vecOrigin = 0x138;
 		inline DWORD m_iCrosshairId = 0x11838;
+		inline DWORD m_dwBoneMatrix = 0x26A8;
 	}
 };

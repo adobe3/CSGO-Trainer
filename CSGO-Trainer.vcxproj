@@ -146,13 +146,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game\Game.cpp" />
-    <ClCompile Include="Source\Game\Offsets\Offsets.cpp" />
+    <ClCompile Include="Source\Graphics\Graphics.cpp" />
     <ClCompile Include="Source\Graphics\Menu\Menu.cpp" />
     <ClCompile Include="Source\Graphics\Rendering\Rendering.cpp" />
     <ClCompile Include="Source\Main.cpp" />
-    <ClCompile Include="Source\Trainer\ESP 2D\Esp2D.cpp" />
+    <ClCompile Include="Source\Trainer\Features\Aimbot.cpp" />
+    <ClCompile Include="Source\Trainer\Features\Esp2D.cpp" />
     <ClCompile Include="Source\Trainer\Trainer.cpp" />
-    <ClCompile Include="Source\Trainer\Triggerbot\Triggerbot.cpp" />
+    <ClCompile Include="Source\Trainer\Features\Triggerbot.cpp" />
     <ClCompile Include="Source\Utilities\Logging\Logging.cpp" />
     <ClCompile Include="Source\Utilities\Math\Math.cpp" />
     <ClCompile Include="Source\Utilities\Memory\Memory.cpp" />
@@ -161,9 +162,13 @@
     <ClInclude Include="Dependencies\skCrypter\skCrypter.h" />
     <ClInclude Include="Source\Game\Game.h" />
     <ClInclude Include="Source\Graphics\Graphics.h" />
+    <ClInclude Include="Source\Graphics\Menu\Menu.h" />
+    <ClInclude Include="Source\Graphics\Rendering\Rendering.h" />
     <ClInclude Include="Source\Stdafx.h" />
     <ClInclude Include="Source\Trainer\Trainer.h" />
-    <ClInclude Include="Source\Utilities\Utilities.h" />
+    <ClInclude Include="Source\Utilities\Logging\Logging.h" />
+    <ClInclude Include="Source\Utilities\Math\Math.h" />
+    <ClInclude Include="Source\Utilities\Memory\Memory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

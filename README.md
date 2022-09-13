@@ -12,10 +12,9 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 ## Compilation & Runtime Instructions:
 * Install [DirectX Software Development Kit](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6812)
 * Compile CSGO-Trainer.sln as Release/x86
-* Run Counter-Strike: Global Offensive with "-insecure" flag
-* Set the games display as "Fullscreen Windowed" & "1920x1080"
+* Run Counter-Strike: Global Offensive with "-insecure -noborder" launch options
 * Run CSGO-Trainer.bat
-* Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle display with INSERT.
+* Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle display with INSERT
 
 ## Credits:
 * [coltonon](https://github.com/coltonon) for [D2DOverlay](https://github.com/coltonon/D2DOverlay)
@@ -29,8 +28,5 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Memory caching
 * Fix inline variable stuff
 * Hotkey support for triggerbot & aimbot using virtual-key codes
-* Add dynamic resolution support
-* Rewrite Esp2D.cpp, get entityHead by reading bone matrix
-* Rewrite WorldToScreen function
 * View angle aimbot
 * More 2D drawing options such as heads, bones, distance, health, & name

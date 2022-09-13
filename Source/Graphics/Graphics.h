@@ -3,6 +3,9 @@
 
 namespace Graphics 
 {
+	bool Initialize();
+	inline int gameWidth, gameHeight;
+
 	/* Menu */
 	void DrawMenu();
 	void MenuHandler();
@@ -36,5 +39,4 @@ void DrawCircle(float x, float y, float radius, float thickness, float r, float 
 void DrawEllipse(float x, float y, float width, float height, float thickness, float r, float g, float b, float a, bool filled);
 void DrawString(std::string str, float fontSize, float x, float y, float r, float g, float b, float a = 1);
 
-/* Our draw loop, fix this fucking file */
 void drawLoop(int width, int height);
