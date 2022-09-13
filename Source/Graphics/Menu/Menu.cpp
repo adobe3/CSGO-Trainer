@@ -6,7 +6,7 @@ void Graphics::DrawMenu()
 	if (Trainer::Settings::menu)
 	{
 		/* 2D Boxes */
-		if (Graphics::activeItem == 5)
+		if (Graphics::activeItem == 6)
 		{
 			DrawString((std::string)skCrypt("2D Boxes"), 14.0, 400, 45, 1.0, 1.0, 0.0, 1.0);
 
@@ -26,7 +26,7 @@ void Graphics::DrawMenu()
 		}
 
 		/* 2D Snaplines */
-		if (Graphics::activeItem == 4)
+		if (Graphics::activeItem == 5)
 		{
 			DrawString((std::string)skCrypt("2D Snaplines"), 14.0, 400, 60, 1.0, 1.0, 0.0, 1.0);
 
@@ -54,7 +54,7 @@ void Graphics::DrawMenu()
 		}
 
 		/* 2D Healthbars */
-		if (Graphics::activeItem == 3)
+		if (Graphics::activeItem == 4)
 		{
 			DrawString((std::string)skCrypt("2D Healthbars"), 14.0, 400, 75, 1.0, 1.0, 0.0, 1.0);
 
@@ -74,7 +74,7 @@ void Graphics::DrawMenu()
 		}
 
 		/* 2D Heads */
-		if (Graphics::activeItem == 2)
+		if (Graphics::activeItem == 3)
 		{
 			DrawString((std::string)skCrypt("2D Heads"), 14.0, 400, 90, 1.0, 1.0, 0.0, 1.0);
 
@@ -93,24 +93,44 @@ void Graphics::DrawMenu()
 				DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 90, 0.0, 1.0, 0.0, 1.0);
 		}
 
-		/* Triggerbot */
-		if (Graphics::activeItem == 1)
+		/* 2D Distance */
+		if (Graphics::activeItem == 2)
 		{
-			DrawString((std::string)skCrypt("Triggerbot"), 14.0, 400, 105, 1.0, 1.0, 0.0, 1.0);
+			DrawString((std::string)skCrypt("2D Distance"), 14.0, 400, 105, 1.0, 1.0, 0.0, 1.0);
 
-			if (Trainer::Settings::triggerbot == 0)
+			if (Trainer::Settings::distance2D == 0)
 				DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 105, 1.0, 0.0, 0.0, 1.0);
-			else if (Trainer::Settings::triggerbot == 1)
+			else if (Trainer::Settings::distance2D == 1)
 				DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 105, 0.0, 1.0, 0.0, 1.0);
 		}
 		else
 		{
-			DrawString((std::string)skCrypt("Triggerbot"), 14.0, 400, 105, 1.0, 1.0, 1.0, 1.0);
+			DrawString((std::string)skCrypt("2D Distance"), 14.0, 400, 105, 1.0, 1.0, 1.0, 1.0);
+
+			if (Trainer::Settings::distance2D == 0)
+				DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 105, 1.0, 0.0, 0.0, 1.0);
+			else if (Trainer::Settings::distance2D == 1)
+				DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 105, 0.0, 1.0, 0.0, 1.0);
+		}
+
+		/* Triggerbot */
+		if (Graphics::activeItem == 1)
+		{
+			DrawString((std::string)skCrypt("Triggerbot"), 14.0, 400, 120, 1.0, 1.0, 0.0, 1.0);
 
 			if (Trainer::Settings::triggerbot == 0)
-				DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 105, 1.0, 0.0, 0.0, 1.0);
+				DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 120, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::Settings::triggerbot == 1)
-				DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 105, 0.0, 1.0, 0.0, 1.0);
+				DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 120, 0.0, 1.0, 0.0, 1.0);
+		}
+		else
+		{
+			DrawString((std::string)skCrypt("Triggerbot"), 14.0, 400, 120, 1.0, 1.0, 1.0, 1.0);
+
+			if (Trainer::Settings::triggerbot == 0)
+				DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 120, 1.0, 0.0, 0.0, 1.0);
+			else if (Trainer::Settings::triggerbot == 1)
+				DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 120, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		/* Triggerbot delay */
@@ -126,19 +146,19 @@ void Graphics::DrawMenu()
 
 		if (Graphics::activeItem == 0)
 		{
-			DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, 400, 120, 1.0, 1.0, 0.0, 1.0);
+			DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, 400, 135, 1.0, 1.0, 0.0, 1.0);
 
-			DrawString((std::string)skCrypt("<"), 14.0, 497, 120, 0.0, 0.45, 1.0, 1.0);
-			DrawString(strTriggerbotDelay, 14.0, 504, 120, 0.0, 0.45, 1.0, 1.0);
-			DrawString((std::string)skCrypt(">"), 14.0, 526, 120, 0.0, 0.45, 1.0, 1.0);
+			DrawString((std::string)skCrypt("<"), 14.0, 497, 135, 0.0, 0.45, 1.0, 1.0);
+			DrawString(strTriggerbotDelay, 14.0, 504, 135, 0.0, 0.45, 1.0, 1.0);
+			DrawString((std::string)skCrypt(">"), 14.0, 526, 135, 0.0, 0.45, 1.0, 1.0);
 		}
 		else
 		{
-			DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, 400, 120, 1.0, 1.0, 1.0, 1.0);
+			DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, 400, 135, 1.0, 1.0, 1.0, 1.0);
 
-			DrawString((std::string)skCrypt("<"), 14.0, 497, 120, 0.0, 0.45, 1.0, 1.0);
-			DrawString(strTriggerbotDelay, 14.0, 504, 120, 0.0, 0.45, 1.0, 1.0);
-			DrawString((std::string)skCrypt(">"), 14.0, 526, 120, 0.0, 0.45, 1.0, 1.0);
+			DrawString((std::string)skCrypt("<"), 14.0, 497, 135, 0.0, 0.45, 1.0, 1.0);
+			DrawString(strTriggerbotDelay, 14.0, 504, 135, 0.0, 0.45, 1.0, 1.0);
+			DrawString((std::string)skCrypt(">"), 14.0, 526, 135, 0.0, 0.45, 1.0, 1.0);
 		}
 	}
 }
@@ -154,32 +174,39 @@ void Graphics::MenuHandler()
 
 		switch (Graphics::activeItem)
 		{
-			case 5: /* 2D Boxes */
+			case 6: /* 2D Boxes */
 				if (GetAsyncKeyState(VK_RIGHT) & 1 && Trainer::Settings::boxes2D < 1)
 					Trainer::Settings::boxes2D++;
 				else if (GetAsyncKeyState(VK_LEFT) & 1 && Trainer::Settings::boxes2D > 0)
 					Trainer::Settings::boxes2D--;
 				break;
 
-			case 4: /* 2D Snaplines */
+			case 5: /* 2D Snaplines */
 				if (GetAsyncKeyState(VK_RIGHT) & 1 && Trainer::Settings::snaplines2D < 3)
 					Trainer::Settings::snaplines2D++;
 				else if (GetAsyncKeyState(VK_LEFT) & 1 && Trainer::Settings::snaplines2D > 0)
 					Trainer::Settings::snaplines2D--;
 				break;
 
-			case 3: /* 2D Healthbars */
+			case 4: /* 2D Healthbars */
 				if (GetAsyncKeyState(VK_RIGHT) & 1 && Trainer::Settings::healthbars2D < 1)
 					Trainer::Settings::healthbars2D++;
 				else if (GetAsyncKeyState(VK_LEFT) & 1 && Trainer::Settings::healthbars2D > 0)
 					Trainer::Settings::healthbars2D--;
 				break;
 
-			case 2: /* 2D Heads */
+			case 3: /* 2D Heads */
 				if (GetAsyncKeyState(VK_RIGHT) & 1 && Trainer::Settings::heads2D < 1)
 					Trainer::Settings::heads2D++;
 				else if (GetAsyncKeyState(VK_LEFT) & 1 && Trainer::Settings::heads2D > 0)
 					Trainer::Settings::heads2D--;
+				break;
+
+			case 2: /* 2D Distance */
+				if (GetAsyncKeyState(VK_RIGHT) & 1 && Trainer::Settings::distance2D < 1)
+					Trainer::Settings::distance2D++;
+				else if (GetAsyncKeyState(VK_LEFT) & 1 && Trainer::Settings::distance2D > 0)
+					Trainer::Settings::distance2D--;
 				break;
 
 			case 1: /* Triggerbot */
@@ -197,10 +224,10 @@ void Graphics::MenuHandler()
 				break;
 
 			default: /* If user goes over final menu selection, reset it */
-				if (Graphics::activeItem == 6)
+				if (Graphics::activeItem == 7)
 					Graphics::activeItem = 0;
 				else if (Graphics::activeItem == -1)
-					Graphics::activeItem = 5;
+					Graphics::activeItem = 6;
 		}
 	}
 }

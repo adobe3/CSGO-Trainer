@@ -30,4 +30,3 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Fix inline variable stuff
 * Hotkey support for triggerbot & aimbot using virtual-key codes
 * View angle aimbot
-* More 2D drawing options such as distance & name

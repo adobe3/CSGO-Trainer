@@ -9,6 +9,7 @@ void Trainer::Esp2D()
 		/* Ranked: 10 entities, Casual: 20 entities, Community: ~32~ entities */
 		for (int i = 1; i < 32; i++) 
 		{ 
+			DWORD localPlayer = Game::GetLocalPlayer();
 			DWORD localEntity = Game::GetLocalEntity(i);
 
 			if (!Game::ValidateEntity(i))
@@ -16,8 +17,12 @@ void Trainer::Esp2D()
 
 			if (!Game::TeamCheck(i))
 				continue;
-
+			
+			/* Get our view matrix */
 			Math::view_matrix_t viewMatrix = Memory::Read<Math::view_matrix_t>(Game::client + Game::Offsets::dwViewMatrix);
+
+			/* Get our players origin, used for 2D Distance */
+			Math::Vector3 playerOrigin = Memory::Read<Math::Vector3>(localPlayer + Game::Offsets::m_vecOrigin);
 
 			/* Get our entity origin & head */
 			Math::Vector3 entityOrigin = Memory::Read<Math::Vector3>(localEntity + Game::Offsets::m_vecOrigin);
@@ -83,9 +88,9 @@ void Trainer::Esp2D()
 				int entityHealth = Memory::Read<int>(localEntity + Game::Offsets::m_iHealth);
 				float healthFrac = static_cast<float>(entityHealth) / 100;
 
-				DrawBox(x - width / 1.7, y, height / 75.f, height, 0.7, 0.0, 0.0, 0.0, 0.4, true);
-				DrawBox(x - width / 1.7, y, height / 75.f, healthFrac * height, 0.7, 1 - healthFrac, healthFrac, 0.0, 1.0, true);
-				DrawBox(x - width / 1.7, y, height / 75.f, height, 0.7, 0.0, 0.0, 0.0, 0.4, false);
+				DrawBox(x + width / 1.9f, y, height / 80.f, height, 0.7, 0.0, 0.0, 0.0, 0.4, true);
+				DrawBox(x + width / 1.9f, y, height / 80.f, healthFrac * height, 0.7, 1 - healthFrac, healthFrac, 0.0, 1.0, true);
+				DrawBox(x + width / 1.9f, y, height / 80.f, height, 0.7, 0.0, 0.0, 0.0, 0.4, false);
 			}
 
 			/* 2D Heads */
@@ -93,6 +98,15 @@ void Trainer::Esp2D()
 			{
 				DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, 0.7, 1.0, 0.0, 0.0, 0.1, true);
 				DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, 0.7, 1.0, 0.0, 0.0, 1.0, false);
+			}
+
+			/* 2D Distance */
+			if (Trainer::Settings::distance2D == 1)
+			{
+				int entityDistance = sqrt(pow(playerOrigin.x - entityOrigin.x, 2) + pow(playerOrigin.y - entityOrigin.y, 2) + pow(playerOrigin.z - entityOrigin.z, 2)) * 0.0254f;
+
+				std::string strEntityDistance = std::to_string(entityDistance);
+				DrawString(strEntityDistance, 6.9, x - width / 1.7f, y + height, 1.0, 0.0, 0.0, 1.0);
 			}
 		}
 }

@@ -15,6 +15,7 @@ namespace Trainer
 		inline int snaplines2D = 0; /* 0 OFF, 1 BOTTOM, 2 MIDDLE, 3 TOP */
 		inline int healthbars2D = 0; /* 0 OFF, 1 ON */
 		inline int heads2D = 0; /* 0 OFF, 1 ON */
+		inline int distance2D = 0; /* 0 OFF, 1 ON */
 
 		inline int triggerbot = 0; /* 0 OFF, 1 ON */
 		inline int triggerbotDelay = 0; /* 0ms - 300ms */
