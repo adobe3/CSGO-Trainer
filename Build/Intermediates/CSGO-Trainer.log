@@ -1,18 +1,7 @@
-﻿  Graphics.cpp
-  Esp2D.cpp
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(42,75): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(43,76): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(48,90): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(48,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(48,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(52,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(53,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(75,54): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(78,97): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Source\Trainer\Features\Esp2D.cpp(78,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Main.cpp
   Generating code
-  14 of 408 functions ( 3.4%) were compiled, the rest were copied from previous compilation.
-    4 functions were new in current compilation
+  16 of 428 functions ( 3.7%) were compiled, the rest were copied from previous compilation.
+    12 functions were new in current compilation
     2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   CSGO-Trainer.vcxproj -> C:\Users\adobe\Desktop\Programming\Projects\CSGO-Trainer\Build\IPHLPAPI.dll

@@ -22,6 +22,11 @@ DWORD WINAPI Initialize()
     /* Trainer initialization */
     Trainer::Initialize();
 
+    /* Exit trainer if CS:GO has been closed */
+    while (FindWindowA(NULL, skCrypt("Counter-Strike: Global Offensive - Direct3D 9")))
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+
+    exit(0);
     return TRUE;
 }
 
