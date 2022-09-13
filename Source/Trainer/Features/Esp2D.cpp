@@ -31,10 +31,12 @@ void Trainer::Esp2D()
 			if (entityOrigin2D.z < 0.01f || entityHead2D.z < 0.01f)
 				continue;
 
-			float x = entityOrigin2D.x;
+			float x = entityHead2D.x;
 			float y = entityOrigin2D.y;
 			float height = entityHead2D.y - entityOrigin2D.y;
 			float width = height / 2.4f;
+
+			DrawCircle(entityHead2D.x, entityHead2D.y, 0.1f - width / 2, 0.7, 1.0, 0.0, 0.0, 1.0, false);
 
 			/* 2D Boxes */
 			if (Trainer::Settings::boxes2D == 1)
