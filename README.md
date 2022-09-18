@@ -6,7 +6,7 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Direct2D Graphics
 * Compile time string obfuscation
 * External / Internal framework, operating inside the process space of Windows Media Player
-* Various cheats such as 2D Boxes, Triggerbot, & more.
+* Various cheats such as Box ESP, Triggerbot, & more
 * Optimal preformance with less than 1.0% average CPU usage
 
 ## Compilation & Runtime Instructions:
@@ -15,7 +15,7 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Run Counter-Strike: Global Offensive with "-insecure" launch option
 * Set the games display mode as "Fullscreen Windowed"
 * Run CSGO-Trainer.bat as administrator
-* Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle display with INSERT
+* Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle with the INSERT key
 
 ## Credits:
 * [coltonon](https://github.com/coltonon) for [D2DOverlay](https://github.com/coltonon/D2DOverlay)

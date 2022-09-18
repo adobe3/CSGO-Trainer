@@ -1,4 +1,6 @@
-#include "../Graphics.h"
+#include "Rendering.h"
+#include "../Menu/Menu.h"
+#include "../../Trainer/ESP/ESP.h"
 
 ID2D1Factory* factory;
 ID2D1HwndRenderTarget* target;
@@ -19,11 +21,11 @@ bool o_DrawFPS = false;
 bool o_VSync = false;
 std::wstring fontname = L"Courier";
 
-DirectOverlayCallback drawLoopCallback = NULL;
+Graphics::Rendering::DirectOverlayCallback drawLoopCallback = NULL;
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-void DrawString(std::string str, float fontSize, float x, float y, float r, float g, float b, float a)
+void Graphics::Rendering::DrawString(std::string str, float fontSize, float x, float y, float r, float g, float b, float a)
 {
 	RECT re;
 	GetClientRect(overlayWindow, &re);
@@ -42,26 +44,26 @@ void DrawString(std::string str, float fontSize, float x, float y, float r, floa
 	}
 }
 
-void DrawBox(float x, float y, float width, float height, float thickness, float r, float g, float b, float a, bool filled)
+void Graphics::Rendering::DrawBox(float x, float y, float width, float height, float thickness, float r, float g, float b, float a, bool filled)
 {
 	solid_brush->SetColor(D2D1::ColorF(r, g, b, a));
 	if (filled)  target->FillRectangle(D2D1::RectF(x, y, x + width, y + height), solid_brush);
 	else target->DrawRectangle(D2D1::RectF(x, y, x + width, y + height), solid_brush, thickness);
 }
 
-void DrawLine(float x1, float y1, float x2, float y2, float thickness, float r, float g, float b, float a) {
+void Graphics::Rendering::DrawLine(float x1, float y1, float x2, float y2, float thickness, float r, float g, float b, float a) {
 	solid_brush->SetColor(D2D1::ColorF(r, g, b, a));
 	target->DrawLine(D2D1::Point2F(x1, y1), D2D1::Point2F(x2, y2), solid_brush, thickness);
 }
 
-void DrawCircle(float x, float y, float radius, float thickness, float r, float g, float b, float a, bool filled)
+void Graphics::Rendering::DrawCircle(float x, float y, float radius, float thickness, float r, float g, float b, float a, bool filled)
 {
 	solid_brush->SetColor(D2D1::ColorF(r, g, b, a));
 	if (filled) target->FillEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), radius, radius), solid_brush);
 	else target->DrawEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), radius, radius), solid_brush, thickness);
 }
 
-void DrawEllipse(float x, float y, float width, float height, float thickness, float r, float g, float b, float a, bool filled)
+void Graphics::Rendering::DrawEllipse(float x, float y, float width, float height, float thickness, float r, float g, float b, float a, bool filled)
 {
 	solid_brush->SetColor(D2D1::ColorF(r, g, b, a));
 	if (filled) target->FillEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), width, height), solid_brush);
@@ -139,7 +141,7 @@ void mainLoop() {
 					fps = 1000 / (float)frameTime;
 					showTime = postTime;
 				}
-				DrawString(std::to_string(fps), 20, siz.width - 50, 0, 0, 1, 0);
+				Graphics::Rendering::DrawString(std::to_string(fps), 20, siz.width - 50, 0, 0, 1, 0);
 			}
 
 			if (o_VSync) {
@@ -199,17 +201,23 @@ DWORD WINAPI OverlayThread(LPVOID lpParam)
 	}
 }
 
-void DirectOverlaySetup(DirectOverlayCallback callback) {
+void Graphics::Rendering::DirectOverlaySetup(DirectOverlayCallback callback) {
 	drawLoopCallback = callback;
 	CreateThread(0, 0, OverlayThread, NULL, 0, NULL);
 }
 
-void DirectOverlaySetup(DirectOverlayCallback callback, HWND _targetWindow) {
+void Graphics::Rendering::DirectOverlaySetup(DirectOverlayCallback callback, HWND _targetWindow) {
 	drawLoopCallback = callback;
 	CreateThread(0, 0, OverlayThread, _targetWindow, 0, NULL);
+
+	RECT rect;
+	GetWindowRect(FindWindowA(NULL, skCrypt("Counter-Strike: Global Offensive - Direct3D 9")), &rect);
+
+	Graphics::Rendering::gameWidth = rect.right - rect.left;
+	Graphics::Rendering::gameHeight = rect.bottom - rect.top;
 }
 
-void DirectOverlaySetOption(DWORD option) {
+void Graphics::Rendering::DirectOverlaySetOption(DWORD option) {
 	if (option & D2DOV_REQUIRE_FOREGROUND) o_Foreground = true;
 	if (option & D2DOV_DRAW_FPS) o_DrawFPS = true;
 	if (option & D2DOV_VSYNC) o_VSync = true;
@@ -220,16 +228,14 @@ void DirectOverlaySetOption(DWORD option) {
 	if (option & D2DOV_FONT_IMPACT) fontname = L"Impact";
 }
 
-// our loop to render in
-void drawLoop(int width, int height) 
+void Graphics::Rendering::Begin(int width, int height) 
 {  
 	if (GetAsyncKeyState(VK_INSERT) & 1)
-		Trainer::Settings::menu =! Trainer::Settings::menu;
+		Graphics::Menu::status = !Graphics::Menu::status;
 
-	/* Menu */
-	Graphics::DrawMenu();
-	Graphics::MenuHandler();
+	// Menu
+	Graphics::Menu::Draw();
 
-	/* 2D ESP */
-	Trainer::Esp2D();
+	// ESP
+	Trainer::ESP::Run();
 }

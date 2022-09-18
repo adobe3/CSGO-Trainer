@@ -1,12 +1,12 @@
-#include "../Trainer.h"
+#include "Triggerbot.h"
 #include "../../Game/Game.h"
 #include "../../Utilities/Memory/Memory.h"
 
-void Trainer::Triggerbot()
+void Trainer::Triggerbot::Run()
 {
 	while (true) 
 	{
-		while (Trainer::Settings::triggerbot == 1) 
+		while (Trainer::Triggerbot::status == 1) 
 		{
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
@@ -16,9 +16,9 @@ void Trainer::Triggerbot()
 			if (!Game::TeamCheck(crosshairId - 1))
 				continue;
 
-			if (GetAsyncKeyState(Trainer::Settings::triggerbotHotkey) && crosshairId > 0 && crosshairId < 32)
+			if (GetAsyncKeyState(Trainer::Triggerbot::hotkey) && crosshairId > 0 && crosshairId < 32)
 			{
-				std::this_thread::sleep_for(std::chrono::milliseconds(Trainer::Settings::triggerbotDelay));
+				std::this_thread::sleep_for(std::chrono::milliseconds(Trainer::Triggerbot::delay));
 
 				mouse_event(MOUSEEVENTF_LEFTDOWN, NULL, NULL, 0, 0);
 				mouse_event(MOUSEEVENTF_LEFTUP, NULL, NULL, 0, 0);

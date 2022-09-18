@@ -5,7 +5,6 @@
 
 namespace Game 
 {
-	bool Initialize(HANDLE& handle, DWORD& processId, DWORD& client, DWORD& engine);
 	DWORD GetLocalPlayer();
 	DWORD GetLocalEntity(int i);
 	bool ValidateEntity(int i);
@@ -17,7 +16,7 @@ namespace Game
 	inline DWORD client;
 	inline DWORD engine;
 
-	/* Update offsets from here, https://github.com/frk1/hazedumper/blob/master/csgo.hpp */
+	// Update offsets from here: https://github.com/frk1/hazedumper/blob/master/csgo.hpp
 	namespace Offsets 
 	{
 		bool Update();

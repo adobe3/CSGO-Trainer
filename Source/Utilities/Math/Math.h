@@ -2,7 +2,8 @@
 
 #include "../../Stdafx.h"
 
-namespace Math {
+namespace Math 
+{
     struct Vector3
     {
         float x, y, z;

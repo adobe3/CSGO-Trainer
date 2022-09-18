@@ -2,22 +2,6 @@
 #include "../Utilities/Memory/Memory.h"
 #include "../Utilities/Logging/Logging.h"
 
-bool Game::Initialize(HANDLE& handle, DWORD& processId, DWORD& client, DWORD& engine)
-{
-	handle = OpenProcess(FILE_ALL_ACCESS, false, Memory::GetProcessId(skCrypt("Counter-Strike: Global Offensive - Direct3D 9")));
-	processId = Memory::GetProcessId(skCrypt("Counter-Strike: Global Offensive - Direct3D 9"));
-	client = Memory::GetModuleAddress(processId, skCrypt(L"client.dll"));
-	engine = Memory::GetModuleAddress(processId, skCrypt(L"engine.dll"));
-
-	if (!client || !engine)
-		Logging::LogErrorMB(skCrypt("Failed to locate specified modules, please make sure the target application is running."));
-
-	if (!Game::Offsets::Update())
-		Logging::LogErrorMB(skCrypt("Failed to update game offsets."));
-
-	return true;
-}
-
 DWORD Game::GetLocalPlayer()
 {
 	DWORD localPlayer = Memory::Read<DWORD>(Game::client + Game::Offsets::dwLocalPlayer);
@@ -65,15 +49,16 @@ Math::Vector3 Game::GetEntityBone(DWORD localEntity, int boneId)
 
 	Math::Vector3 entityBone = Math::Vector3
 	{
-		Memory::Read<float>(boneMatrix + 0x30 * boneId + 0x0C), /* X */
-		Memory::Read<float>(boneMatrix + 0x30 * boneId + 0x1C), /* Y */
-		Memory::Read<float>(boneMatrix + 0x30 * boneId + 0x2C), /* Z */
+		Memory::Read<float>(boneMatrix + 0x30 * boneId + 0x0C), // X
+		Memory::Read<float>(boneMatrix + 0x30 * boneId + 0x1C), // Y
+		Memory::Read<float>(boneMatrix + 0x30 * boneId + 0x2C), // Z
 	};
 
 	return entityBone;
 }
 
-bool Game::Offsets::Update() {
+bool Game::Offsets::Update() 
+{
 
 	return true;
 }

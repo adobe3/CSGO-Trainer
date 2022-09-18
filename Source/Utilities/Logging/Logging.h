@@ -2,7 +2,8 @@
 
 #include "../../Stdafx.h"
 
-namespace Logging {
+namespace Logging 
+{
     void Log(const char* msg);
     void LogError(const char* msg);
     void LogErrorMB(LPCSTR msg);
