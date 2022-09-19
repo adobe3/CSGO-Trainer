@@ -53,31 +53,25 @@ void Trainer::ESP::Run()
 				Graphics::Rendering::DrawLine(Graphics::Rendering::gameWidth / 2, Graphics::Rendering::gameHeight, x, y, 0.7, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::snaplineStatus == 2) // MIDDLE
 			{
-				float radius = 50.0;					 // Center circle's radius
-				float x1 = static_cast<float>(Graphics::Rendering::gameWidth / 2);			// Center X
-				float y1 = static_cast<float>(Graphics::Rendering::gameHeight / 2);		// Center Y
-				float x2 = entityHead2D.x;				 // Entity X
-				float y2 = entityHead2D.y;				 // Entity Y
-				float a = y2 - y1;						 // Distance between Entity Y and Center Y
-				float b = x2 - x1;						 // Distance between Entity X and Center X
-				float c = sqrt(a * a + b * b);			 // Hypotenuse of entity triangle
-				float x3 = 0.0;
-				float y3 = 0.0;
-				float angle = atan(a / b);				 // Angle degrees from Center + Entity's right triangle
+				float radius = 45.f;
+				float a = entityHead2D.y - Graphics::Rendering::gameHeight / 2;				// Distance between Entity Y and Center Y
+				float b = entityHead2D.x - Graphics::Rendering::gameWidth / 2;				// Distance between Entity X and Center X										// Hypotenuse of entity triangle
+				float x3, y3;
+				float angle = atan(a / b);													// Angle degrees from Center + Entity's right triangle
 
-				if (b >= 0)								 // Normalize the result if (Entity X - Center X) is less than 0
+				if (b >= 0)																	// Normalize the result if (Entity X - Center X) is less than 0
 				{
-					x3 = radius * cos(angle) + x1;       // Calculate the circle's X position (radius * angle's cosine + center x)
-					y3 = radius * sin(angle) + y1;       // Calculate the circle's Y position (radius * angle's sine + center x)
+					x3 = radius * cos(angle) + Graphics::Rendering::gameWidth / 2;			// Calculate the circle's X position (radius * angle's cosine + center x)
+					y3 = radius * sin(angle) + Graphics::Rendering::gameHeight / 2;			// Calculate the circle's Y position (radius * angle's sine + center x)
 				}
 				else
 				{
-					x3 = radius * (-cos(angle)) + x1;
-					y3 = radius * (-sin(angle)) + y1;
+					x3 = radius * (-cos(angle)) + Graphics::Rendering::gameWidth / 2;
+					y3 = radius * (-sin(angle)) + Graphics::Rendering::gameHeight / 2;
 				}
 
-				if(c >= radius)												// If entity is not inside circle radius
-					Graphics::Rendering::DrawLine(x2, y2, x3, y3, 0.7, 1.0, 0.0, 0.0, 1.0);		// Draw line from Entity X, Entity Y to Circle X, Circle Y
+				if(sqrt(a * a + b * b) >= radius)											// If hypotenuse is greater than or equal to raidus, draw snaplines
+					Graphics::Rendering::DrawLine(entityHead2D.x, entityHead2D.y, x3, y3, 0.7, 1.0, 0.0, 0.0, 1.0);
 			} 
 			else if (Trainer::ESP::snaplineStatus == 3) // TOP
 				Graphics::Rendering::DrawLine(Graphics::Rendering::gameWidth / 2, 0, entityHead2D.x, entityHead2D.y, 0.7, 1.0, 0.0, 0.0, 1.0);

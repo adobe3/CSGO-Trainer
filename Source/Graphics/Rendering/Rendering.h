@@ -29,6 +29,6 @@ namespace Graphics
 
 		void Begin(int width, int height);
 
-		inline int gameWidth, gameHeight;
+		inline float gameWidth, gameHeight;
 	}
 }

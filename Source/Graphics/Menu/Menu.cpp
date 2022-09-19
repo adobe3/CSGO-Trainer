@@ -76,134 +76,142 @@ void Graphics::Menu::Draw()
 {
 	Graphics::Menu::Handler();
 
+	float x = (Graphics::Rendering::gameWidth / 4.9);
+	float y = 42;
+	float width = 174;
+	float height = 115;
+
 	if (Graphics::Menu::status)
 	{
+		// Menu Background
+		Graphics::Rendering::DrawBox(x, y, width, height, 1.0, 0.0, 0.0, 0.0, 0.3, true);
+
 		// Box ESP
 		if (Graphics::Menu::activeItem == 6)
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Boxes"), 14.0, 400, 45, 1.0, 1.0, 0.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Box ESP"), 14.0, x + 6, 45, 1.0, 1.0, 0.0, 1.0);
 
 			if (Trainer::ESP::boxStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 45, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 45, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::boxStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 45, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 45, 0.0, 1.0, 0.0, 1.0);
 		}
 		else
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Boxes"), 14.0, 400, 45, 1.0, 1.0, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Box ESP"), 14.0, x + 6, 45, 1.0, 1.0, 1.0, 1.0);
 
 			if (Trainer::ESP::boxStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 45, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 45, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::boxStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 45, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 45, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		// Snapline ESP
 		if (Graphics::Menu::activeItem == 5)
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Snaplines"), 14.0, 400, 60, 1.0, 1.0, 0.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Snapline ESP"), 14.0, x + 6, 60, 1.0, 1.0, 0.0, 1.0);
 
 			if (Trainer::ESP::snaplineStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 60, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 60, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::snaplineStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<BOTTOM>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<BOTTOM>"), 14.0, x + 106, 60, 0.0, 1.0, 0.0, 1.0);
 			else if (Trainer::ESP::snaplineStatus == 2)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<MIDDLE>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<MIDDLE>"), 14.0, x + 106, 60, 0.0, 1.0, 0.0, 1.0);
 			else if (Trainer::ESP::snaplineStatus == 3)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<TOP>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<TOP>"), 14.0, x + 106, 60, 0.0, 1.0, 0.0, 1.0);
 		}
 		else
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Snaplines"), 14.0, 400, 60, 1.0, 1.0, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Snapline ESP"), 14.0, x + 6, 60, 1.0, 1.0, 1.0, 1.0);
 
 			if (Trainer::ESP::snaplineStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 60, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 60, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::snaplineStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<BOTTOM>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<BOTTOM>"), 14.0, x + 106, 60, 0.0, 1.0, 0.0, 1.0);
 			else if (Trainer::ESP::snaplineStatus == 2)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<MIDDLE>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<MIDDLE>"), 14.0, x + 106, 60, 0.0, 1.0, 0.0, 1.0);
 			else if (Trainer::ESP::snaplineStatus == 3)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<TOP>"), 14.0, 497, 60, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<TOP>"), 14.0, x + 106, 60, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		// Healthbar ESP
 		if (Graphics::Menu::activeItem == 4)
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Healthbars"), 14.0, 400, 75, 1.0, 1.0, 0.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Healthbar ESP"), 14.0, x + 6, 75, 1.0, 1.0, 0.0, 1.0);
 
 			if (Trainer::ESP::healthbarStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 75, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 75, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::healthbarStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 75, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 75, 0.0, 1.0, 0.0, 1.0);
 		}
 		else
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Healthbars"), 14.0, 400, 75, 1.0, 1.0, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Healthbar ESP"), 14.0, x + 6, 75, 1.0, 1.0, 1.0, 1.0);
 
 			if (Trainer::ESP::healthbarStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 75, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 75, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::healthbarStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 75, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 75, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		// Head ESP
 		if (Graphics::Menu::activeItem == 3)
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Heads"), 14.0, 400, 90, 1.0, 1.0, 0.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Head ESP"), 14.0, x + 6, 90, 1.0, 1.0, 0.0, 1.0);
 
 			if (Trainer::ESP::headStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 90, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 90, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::headStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 90, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 90, 0.0, 1.0, 0.0, 1.0);
 		}
 		else
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Heads"), 14.0, 400, 90, 1.0, 1.0, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Head ESP"), 14.0, x + 6, 90, 1.0, 1.0, 1.0, 1.0);
 
 			if (Trainer::ESP::headStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 90, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 90, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::headStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 90, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 90, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		// Distance ESP
 		if (Graphics::Menu::activeItem == 2)
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Distance"), 14.0, 400, 105, 1.0, 1.0, 0.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Distance ESP"), 14.0, x + 6, 105, 1.0, 1.0, 0.0, 1.0);
 
 			if (Trainer::ESP::distanceStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 105, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 105, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::distanceStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 105, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 105, 0.0, 1.0, 0.0, 1.0);
 		}
 		else
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("2D Distance"), 14.0, 400, 105, 1.0, 1.0, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Distance ESP"), 14.0, x + 6, 105, 1.0, 1.0, 1.0, 1.0);
 
 			if (Trainer::ESP::distanceStatus == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 105, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 105, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::ESP::distanceStatus == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 105, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 105, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		// Triggerbot
 		if (Graphics::Menu::activeItem == 1)
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot"), 14.0, 400, 120, 1.0, 1.0, 0.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot"), 14.0, x + 6, 120, 1.0, 1.0, 0.0, 1.0);
 
 			if (Trainer::Triggerbot::status == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 120, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 120, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::Triggerbot::status == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 120, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 120, 0.0, 1.0, 0.0, 1.0);
 		}
 		else
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot"), 14.0, 400, 120, 1.0, 1.0, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot"), 14.0, x + 6, 120, 1.0, 1.0, 1.0, 1.0);
 
 			if (Trainer::Triggerbot::status == 0)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, 497, 120, 1.0, 0.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<OFF>"), 14.0, x + 106, 120, 1.0, 0.0, 0.0, 1.0);
 			else if (Trainer::Triggerbot::status == 1)
-				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, 497, 120, 0.0, 1.0, 0.0, 1.0);
+				Graphics::Rendering::DrawString((std::string)skCrypt("<ON>"), 14.0, x + 106, 120, 0.0, 1.0, 0.0, 1.0);
 		}
 
 		// Triggerbot Delay
@@ -219,19 +227,19 @@ void Graphics::Menu::Draw()
 
 		if (Graphics::Menu::activeItem == 0)
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, 400, 135, 1.0, 1.0, 0.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, x + 6, 135, 1.0, 1.0, 0.0, 1.0);
 
-			Graphics::Rendering::DrawString((std::string)skCrypt("<"), 14.0, 497, 135, 0.0, 0.45, 1.0, 1.0);
-			Graphics::Rendering::DrawString(strTriggerbotDelay, 14.0, 504, 135, 0.0, 0.45, 1.0, 1.0);
-			Graphics::Rendering::DrawString((std::string)skCrypt(">"), 14.0, 526, 135, 0.0, 0.45, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("<"), 14.0, x + 106, 135, 0.0, 0.45, 1.0, 1.0);
+			Graphics::Rendering::DrawString(strTriggerbotDelay, 14.0, x + 113, 135, 0.0, 0.45, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt(">"), 14.0, x + 135, 135, 0.0, 0.45, 1.0, 1.0);
 		}
 		else
 		{
-			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, 400, 135, 1.0, 1.0, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("Triggerbot Delay"), 14.0, x + 6, 135, 1.0, 1.0, 1.0, 1.0);
 
-			Graphics::Rendering::DrawString((std::string)skCrypt("<"), 14.0, 497, 135, 0.0, 0.45, 1.0, 1.0);
-			Graphics::Rendering::DrawString(strTriggerbotDelay, 14.0, 504, 135, 0.0, 0.45, 1.0, 1.0);
-			Graphics::Rendering::DrawString((std::string)skCrypt(">"), 14.0, 526, 135, 0.0, 0.45, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt("<"), 14.0, x + 106, 135, 0.0, 0.45, 1.0, 1.0);
+			Graphics::Rendering::DrawString(strTriggerbotDelay, 14.0, x + 113, 135, 0.0, 0.45, 1.0, 1.0);
+			Graphics::Rendering::DrawString((std::string)skCrypt(">"), 14.0, x + 135, 135, 0.0, 0.45, 1.0, 1.0);
 		}
 	}
 }
