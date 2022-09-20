@@ -115,6 +115,7 @@ void Render()
 	DirectX9Interface::pDevice->SetRenderState(D3DRS_SCISSORTESTENABLE, false);
 
 	DirectX9Interface::pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(0, 0, 0, 0), 1.0f, 0);
+
 	if (DirectX9Interface::pDevice->BeginScene() >= 0) {
 		ImGui::Render();
 		ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
@@ -231,6 +232,7 @@ bool DirectXInit() {
 	ImGui_ImplWin32_Init(OverlayWindow::Hwnd);
 	ImGui_ImplDX9_Init(DirectX9Interface::pDevice);
 	DirectX9Interface::Direct3D9->Release();
+
 	return true;
 }
 

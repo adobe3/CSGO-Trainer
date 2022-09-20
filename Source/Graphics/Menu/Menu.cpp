@@ -9,8 +9,7 @@ void Graphics::Menu::Draw()
 {
 	if (Graphics::Menu::status)
 	{
-        ImGui::SetNextWindowSize(ImVec2(400, 275));
-		ImGui::Begin(skCrypt("CSGO-Trainer"), NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+		ImGui::Begin(skCrypt("CSGO-Trainer"), NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize);
 
         if (ImGui::BeginTabBar(skCrypt("##Menu Bar")))
         {
@@ -30,7 +29,10 @@ void Graphics::Menu::Draw()
                 ImGui::Combo(skCrypt("##Snapline Type"), &Trainer::ESP::snaplineType, "Bottom\0Middle\0Top\0\0");
                 ImGui::ColorEdit3(skCrypt("##Snapline Color"), Trainer::ESP::snaplineColor);
 
-                ImGui::Checkbox(skCrypt("Healthbar ESP"), &Trainer::ESP::healthbarStatus);
+                ImGui::Checkbox(skCrypt("Health ESP"), &Trainer::ESP::healthStatus);
+                ImGui::SameLine();
+                ImGui::Combo(skCrypt("##Health Type"), &Trainer::ESP::healthType, "Bar\0Text\0\0");
+                ImGui::ColorEdit3(skCrypt("##Health Color"), Trainer::ESP::healthColor);
 
                 ImGui::Checkbox(skCrypt("Distance ESP"), &Trainer::ESP::distanceStatus);
                 ImGui::ColorEdit3(skCrypt("##Distance Color"), Trainer::ESP::distanceColor);

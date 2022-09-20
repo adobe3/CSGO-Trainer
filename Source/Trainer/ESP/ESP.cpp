@@ -44,14 +44,17 @@ void Trainer::ESP::Run()
 		// Box ESP
 		if (Trainer::ESP::boxStatus == true)
 		{
+			// Sync our background color to border color
+			float boxBackgroundColor[4] = { boxColor[0], boxColor[1], boxColor[2], 0.2f };
+
 			if (Trainer::ESP::boxType == 0)
 			{
-				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height, Trainer::ESP::boxBackgroundColor);
+				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height, boxBackgroundColor);
 				Graphics::Rendering::DrawRect(x - width / 2, y, width, height, Trainer::ESP::boxColor, 1);
 			}
 			else if (Trainer::ESP::boxType == 1)
 			{
-				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height, Trainer::ESP::boxBackgroundColor);
+				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height, boxBackgroundColor);
 				Graphics::Rendering::DrawCornerBox(x - width / 2, y, width, height, 1, Trainer::ESP::boxColor);
 			}
 		}
@@ -87,23 +90,38 @@ void Trainer::ESP::Run()
 				Graphics::Rendering::DrawLine(Graphics::Rendering::gameWidth / 2, 0, entityHead2D.x, entityHead2D.y, Trainer::ESP::snaplineColor, 1);
 		}
 
-		float red[4] = { 0, 0, 255, 255 };
-
-		// Healthbar ESP
-		if (Trainer::ESP::healthbarStatus == true) 
+		// Health ESP
+		if (Trainer::ESP::healthStatus == true) 
 		{
 			int entityHealth = Memory::Read<int>(localEntity + Game::Offsets::m_iHealth);
-			float healthFrac = static_cast<float>(entityHealth) / 100;
 
-			Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, height / 80.f, height, red);
-			Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, height / 80.f, healthFrac * height, red);
-			Graphics::Rendering::DrawRect(x + width / 1.9f, y, height / 80.f, height, red, 1);
+			if (Trainer::ESP::healthType == 0) // Healthbar
+			{
+				float healthFrac = static_cast<float>(entityHealth) / 100;
+				float healthbarBackgroundColor[4] = { 0, 0, 0, 0.2 };
+				float healthbarBackgroundColor2[4] = { 0, 0, 0, 1.0 };
+				float healthbarColor[4] = { 1 - healthFrac, healthFrac, 0, 1 };
+
+				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 90.f + 1.9f, height, healthbarBackgroundColor);
+				Graphics::Rendering::DrawRect(x + width / 1.9f, y, width / 90.f + 1.9f, height, healthbarBackgroundColor2, 0.8f);
+				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 90.f + 1.9f, height * healthFrac, healthbarColor);
+			}
+			else if (Trainer::ESP::healthType == 1) // Health text
+			{
+				char strEntityHealth[64];
+				sprintf_s(strEntityHealth, "%0.f HP", (float)entityHealth);
+
+				Graphics::Rendering::DrawStrokeString(x - width / 1.7f, entityHead2D.y + 10, Trainer::ESP::healthColor, strEntityHealth);
+			}
 		}
 
 		// Head ESP
 		if (Trainer::ESP::headStatus == true)
 		{
-			Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, Trainer::ESP::headBackgroundColor);
+			// Sync our background color to border color
+			float headBackgroundColor[4] = { headColor[0], headColor[1], headColor[2], 0.2f };
+
+			Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, headBackgroundColor);
 			Graphics::Rendering::DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, Trainer::ESP::headColor, 0);
 		}
 
@@ -113,7 +131,7 @@ void Trainer::ESP::Run()
 			char entityDistance[64];
 			sprintf_s(entityDistance, "%0.fm", sqrt(pow(playerOrigin.x - entityOrigin.x, 2) + pow(playerOrigin.y - entityOrigin.y, 2) + pow(playerOrigin.z - entityOrigin.z, 2)) * 0.0254f);
 
-			Graphics::Rendering::DrawStrokeString(x - width / 1.7f, y, Trainer::ESP::distanceColor, entityDistance);
+			Graphics::Rendering::DrawStrokeString(x - width / 1.7f, entityHead2D.y, Trainer::ESP::distanceColor, entityDistance);
 		}
 	}
 }
