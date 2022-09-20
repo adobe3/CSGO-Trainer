@@ -7,17 +7,20 @@
 #include <TlHelp32.h>
 #include <thread>
 #include <string>
-#include <d2d1.h>
-#include <dwrite.h>
 #include <dwmapi.h>
 #include <fstream>
 #include <comdef.h>
 #include <ctime>
 #include <math.h>
+#include <time.h>
 #include <cmath>
+#include <psapi.h>
+#include <d3d9.h>
 
 #include "../Dependencies/skCrypter/skCrypter.h"
+#include "../Dependencies/Dear ImGui/imgui.h"
+#include "../Dependencies/Dear ImGui/imgui_impl_dx9.h"
+#include "../Dependencies/Dear ImGui/imgui_impl_win32.h"
 
-#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "dwmapi.lib")
-#pragma comment(lib, "dwrite.lib")

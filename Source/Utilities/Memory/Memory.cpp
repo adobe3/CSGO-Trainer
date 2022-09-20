@@ -58,3 +58,34 @@ void Memory::GetWindow(const char* windowTitle, HWND& hwnd, int& width, int& hei
     x = RECT.left;
     y = RECT.top;
 }
+
+std::string Memory::GetRandomString(int len) 
+{
+    srand(time(NULL));
+    std::string str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    std::string newstr;
+    int pos;
+    while (newstr.size() != len) {
+        pos = ((rand() % (str.size() - 1)));
+        newstr += str.substr(pos, 1);
+    }
+    return newstr;
+}
+
+std::string Memory::StringToUTF8(const std::string& str) 
+{
+    int nwLen = ::MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, NULL, 0);
+    wchar_t* pwBuf = new wchar_t[nwLen + 1];
+    ZeroMemory(pwBuf, nwLen * 2 + 2);
+    ::MultiByteToWideChar(CP_ACP, 0, str.c_str(), str.length(), pwBuf, nwLen);
+    int nLen = ::WideCharToMultiByte(CP_UTF8, 0, pwBuf, -1, NULL, NULL, NULL, NULL);
+    char* pBuf = new char[nLen + 1];
+    ZeroMemory(pBuf, nLen + 1);
+    ::WideCharToMultiByte(CP_UTF8, 0, pwBuf, nwLen, pBuf, nLen, NULL, NULL);
+    std::string retStr(pBuf);
+    delete[]pwBuf;
+    delete[]pBuf;
+    pwBuf = NULL;
+    pBuf = NULL;
+    return retStr;
+}

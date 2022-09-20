@@ -11,24 +11,24 @@
 #define D2DOV_FONT_GABRIOLA			(1 << 6)
 #define D2DOV_FONT_IMPACT			(1 << 7)
 
-namespace Graphics 
+namespace Graphics
 {
 	namespace Rendering
 	{
-		typedef void(*DirectOverlayCallback)(int width, int height);
+		void Begin();
 
-		void DirectOverlaySetOption(DWORD option);
-		void DirectOverlaySetup(DirectOverlayCallback callbackFunction); /* Internals */
-		void DirectOverlaySetup(DirectOverlayCallback callbackFunction, HWND targetWindow); /* Externals */
-
-		void DrawLine(float x1, float y1, float x2, float y2, float thickness, float r, float g, float b, float a = 1);
-		void DrawBox(float x, float y, float width, float height, float thickness, float r, float g, float b, float a, bool filled);
-		void DrawCircle(float x, float y, float radius, float thickness, float r, float g, float b, float a, bool filled);
-		void DrawEllipse(float x, float y, float width, float height, float thickness, float r, float g, float b, float a, bool filled);
-		void DrawString(std::string str, float fontSize, float x, float y, float r, float g, float b, float a = 1);
-
-		void Begin(int width, int height);
+		void DrawStrokeString(int x, int y, float color[], const char* str);
+		void DrawString(int x, int y, float color[], const char* str);
+		void DrawRect(int x, int y, int w, int h, float color[], int thickness);
+		void DrawFilledRect(int x, int y, int w, int h, float color[]);
+		void DrawCircleFilled(int x, int y, int radius, float color[]);
+		void DrawCircle(int x, int y, int radius, float color[], int segments);
+		void DrawTriangle(int x1, int y1, int x2, int y2, int x3, int y3, float color[], float thickness);
+		void DrawTriangleFilled(int x1, int y1, int x2, int y2, int x3, int y3, float color[]);
+		void DrawLine(int x1, int y1, int x2, int y2, float color[], int thickness);
+		void DrawCornerBox(int x, int y, int w, int h, int borderPx, float color[]);
 
 		inline float gameWidth, gameHeight;
+		inline float gameX, gameY;
 	}
 }

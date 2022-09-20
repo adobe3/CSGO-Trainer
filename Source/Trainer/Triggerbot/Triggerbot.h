@@ -6,8 +6,8 @@ namespace Trainer
 	{
 		void Run();
 
-		inline int status = 0; // 0: OFF | 1: ON
-		inline int delay = 0; // 0-300ms
-		inline int hotkey = 0x06;
+		inline bool status = false; // FALSE: Off, TRUE: On
+		inline float delay = 0.f; // 0-300ms
+		inline int hotkey = 0x05; // x1 mouse
 	}
 }

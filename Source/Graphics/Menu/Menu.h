@@ -4,12 +4,11 @@
 
 namespace Graphics 
 {
-	namespace Menu 
+	namespace Menu
 	{
 		void Draw();
-		void Handler();
 
-		inline bool status = true; // FALSE: Menu closed | TRUE: Menu opened
-		inline int activeItem = 6;
+		inline bool status = true;
+		inline clock_t clockStart, clockEnd, clockElapsed;
 	}
 }

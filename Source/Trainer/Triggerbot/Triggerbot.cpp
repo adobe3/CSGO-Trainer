@@ -6,7 +6,7 @@ void Trainer::Triggerbot::Run()
 {
 	while (true) 
 	{
-		while (Trainer::Triggerbot::status == 1) 
+		while (Trainer::Triggerbot::status == true) 
 		{
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
@@ -18,7 +18,7 @@ void Trainer::Triggerbot::Run()
 
 			if (GetAsyncKeyState(Trainer::Triggerbot::hotkey) && crosshairId > 0 && crosshairId < 32)
 			{
-				std::this_thread::sleep_for(std::chrono::milliseconds(Trainer::Triggerbot::delay));
+				std::this_thread::sleep_for(std::chrono::milliseconds((int)Trainer::Triggerbot::delay));
 
 				mouse_event(MOUSEEVENTF_LEFTDOWN, NULL, NULL, 0, 0);
 				mouse_event(MOUSEEVENTF_LEFTUP, NULL, NULL, 0, 0);
