@@ -226,6 +226,8 @@ bool DirectXInit() {
 	ImGui::GetIO().WantCaptureMouse || ImGui::GetIO().WantTextInput || ImGui::GetIO().WantCaptureKeyboard;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
+	ImGui::StyleColorsBlack2();
+
 	ImGui_ImplWin32_Init(OverlayWindow::Hwnd);
 	ImGui_ImplDX9_Init(DirectX9Interface::pDevice);
 	DirectX9Interface::Direct3D9->Release();
@@ -331,15 +333,13 @@ void Graphics::Rendering::Begin()
 
 			WindowFocus = true;
 		}
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 	}
 
 	OverlayWindow::Name = Memory::GetRandomString(10).c_str();
 
 	SetupWindow();
 	DirectXInit();
-
-	while (1) 
-	{
-		MainLoop();
-	}
+	MainLoop();
 }

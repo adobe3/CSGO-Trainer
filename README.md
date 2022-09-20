@@ -7,7 +7,7 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Compile time string obfuscation
 * External / Internal framework, operating inside the process space of Windows Media Player
 * Various cheats such as Box ESP, Triggerbot, & more
-* Optimal preformance with less than 1.0% average CPU usage
+* Optimal preformance with less than x.x% average CPU usage
 
 ## Compilation & Runtime Instructions:
 * Install [DirectX Software Development Kit](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6812)
@@ -25,8 +25,9 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 
 ## TODO:
 * Automatic updater via pattern scanning
-* Memory caching
+* Improve preformance / memory caching
 * Fix inline variable stuff
 * Config support
+* Fix background colors & ColorEdit3 not displaying
 * Hotkey support for triggerbot & aimbot using virtual-key codes
 * View angle aimbot
