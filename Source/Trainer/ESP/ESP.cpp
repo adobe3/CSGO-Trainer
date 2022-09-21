@@ -102,16 +102,18 @@ void Trainer::ESP::Run()
 				float healthbarBackgroundColor2[4] = { 0, 0, 0, 1.0 };
 				float healthbarColor[4] = { 1 - healthFrac, healthFrac, 0, 1 };
 
-				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 90.f + 1.9f, height, healthbarBackgroundColor);
-				Graphics::Rendering::DrawRect(x + width / 1.9f, y, width / 90.f + 1.9f, height, healthbarBackgroundColor2, 0.8f);
-				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 90.f + 1.9f, height * healthFrac, healthbarColor);
+				// Don't ask, don't tell.
+
+				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 500.f + 1.9f, height, healthbarBackgroundColor);
+				Graphics::Rendering::DrawRect(x + width / 1.9f, y, width / 500.f + 1.9f, height, healthbarBackgroundColor2, 1.f);
+				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 500.f + 1.9f, height * healthFrac, healthbarColor);
 			}
 			else if (Trainer::ESP::healthType == 1) // Health text
 			{
 				char strEntityHealth[64];
-				sprintf_s(strEntityHealth, "%0.f HP", (float)entityHealth);
+				sprintf_s(strEntityHealth, "[%0.fhp]", (float)entityHealth);
 
-				Graphics::Rendering::DrawStrokeString(x - width / 1.7f, entityHead2D.y + 10, Trainer::ESP::healthColor, strEntityHealth);
+				Graphics::Rendering::DrawString(entityOrigin2D.x - width / 1.7f, entityOrigin2D.y + 13, Trainer::ESP::healthColor, strEntityHealth);
 			}
 		}
 
@@ -119,7 +121,7 @@ void Trainer::ESP::Run()
 		if (Trainer::ESP::headStatus == true)
 		{
 			// Sync our background color to border color
-			float headBackgroundColor[4] = { headColor[0], headColor[1], headColor[2], 0.2f };
+			float headBackgroundColor[4] = { headColor[0], headColor[1], headColor[2], 0.1f };
 
 			Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, headBackgroundColor);
 			Graphics::Rendering::DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, Trainer::ESP::headColor, 0);
@@ -128,10 +130,10 @@ void Trainer::ESP::Run()
 		// Distance ESP
 		if (Trainer::ESP::distanceStatus == true)
 		{
-			char entityDistance[64];
-			sprintf_s(entityDistance, "%0.fm", sqrt(pow(playerOrigin.x - entityOrigin.x, 2) + pow(playerOrigin.y - entityOrigin.y, 2) + pow(playerOrigin.z - entityOrigin.z, 2)) * 0.0254f);
+			char strEntityDistance[64];
+			sprintf_s(strEntityDistance, "[%0.fm]", sqrt(pow(playerOrigin.x - entityOrigin.x, 2) + pow(playerOrigin.y - entityOrigin.y, 2) + pow(playerOrigin.z - entityOrigin.z, 2)) * 0.0254f);
 
-			Graphics::Rendering::DrawStrokeString(x - width / 1.7f, entityHead2D.y, Trainer::ESP::distanceColor, entityDistance);
+			Graphics::Rendering::DrawString(entityOrigin2D.x - width / 1.7f, entityOrigin2D.y, Trainer::ESP::distanceColor, strEntityDistance);
 		}
 	}
 }

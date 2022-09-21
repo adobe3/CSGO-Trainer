@@ -27,6 +27,5 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Automatic updater via pattern scanning
 * Improve preformance / memory caching
 * Fix inline variable stuff
-* Config support
 * Hotkey support for triggerbot & aimbot using virtual-key codes
 * View angle aimbot

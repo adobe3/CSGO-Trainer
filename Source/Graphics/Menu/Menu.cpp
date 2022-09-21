@@ -39,10 +39,6 @@ void Graphics::Menu::Draw()
                 ImGui::SliderFloat(skCrypt("Delay"), &Trainer::Triggerbot::delay, 0.f, 300.f, "%.3fms");
                 ImGui::EndTabItem();
             }
-            if (ImGui::BeginTabItem(skCrypt("Configuration")))
-            {
-                ImGui::EndTabItem();
-            }
             if (ImGui::BeginTabItem(skCrypt("Debug")))
             {
                 ImGui::Text(skCrypt("Trainer FPS: %0.f"), ImGui::GetIO().Framerate);
