@@ -227,7 +227,7 @@ bool DirectXInit() {
 	ImGui::GetIO().WantCaptureMouse || ImGui::GetIO().WantTextInput || ImGui::GetIO().WantCaptureKeyboard;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-	ImGui::StyleColorsBlack2();
+	ImGui::StyleColorsDark();
 
 	ImGui_ImplWin32_Init(OverlayWindow::Hwnd);
 	ImGui_ImplDX9_Init(DirectX9Interface::pDevice);

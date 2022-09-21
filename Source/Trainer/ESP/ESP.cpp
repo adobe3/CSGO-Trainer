@@ -49,13 +49,13 @@ void Trainer::ESP::Run()
 
 			if (Trainer::ESP::boxType == 0)
 			{
-				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height, boxBackgroundColor);
-				Graphics::Rendering::DrawRect(x - width / 2, y, width, height, Trainer::ESP::boxColor, 1);
+				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height / 0.9, boxBackgroundColor);
+				Graphics::Rendering::DrawRect(x - width / 2, y, width, height / 0.9, Trainer::ESP::boxColor, 1);
 			}
 			else if (Trainer::ESP::boxType == 1)
 			{
-				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height, boxBackgroundColor);
-				Graphics::Rendering::DrawCornerBox(x - width / 2, y, width, height, 1, Trainer::ESP::boxColor);
+				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height / 0.9, boxBackgroundColor);
+				Graphics::Rendering::DrawCornerBox(x - width / 2, y, width, height / 0.9, 1, Trainer::ESP::boxColor);
 			}
 		}
 
@@ -121,8 +121,8 @@ void Trainer::ESP::Run()
 			// Sync our background color to border color
 			float headBackgroundColor[4] = { headColor[0], headColor[1], headColor[2], 0.2f };
 
-			Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, headBackgroundColor);
-			Graphics::Rendering::DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 6, Trainer::ESP::headColor, 0);
+			Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, headBackgroundColor);
+			Graphics::Rendering::DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, Trainer::ESP::headColor, 0);
 		}
 
 		// Distance ESP

@@ -28,6 +28,5 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Improve preformance / memory caching
 * Fix inline variable stuff
 * Config support
-* Fix background colors & ColorEdit3 not displaying
 * Hotkey support for triggerbot & aimbot using virtual-key codes
 * View angle aimbot

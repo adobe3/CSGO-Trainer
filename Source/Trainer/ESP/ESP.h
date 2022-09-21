@@ -22,7 +22,6 @@ namespace Trainer
 
 		inline bool headStatus = false; // FALSE: Off, TRUE: On
 		inline float headColor[4] = { 1, 0, 0, 1 };
-		inline float headBackgroundColor[4] = { headColor[0], headColor[1], headColor[2], 0.2};
 
 		inline bool distanceStatus = false; // FALSE: Off, TRUE: On
 		inline float distanceColor[4] = { 1, 0, 0, 1 };

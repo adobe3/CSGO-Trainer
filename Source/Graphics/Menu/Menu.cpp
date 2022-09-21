@@ -9,7 +9,7 @@ void Graphics::Menu::Draw()
 {
 	if (Graphics::Menu::status)
 	{
-		ImGui::Begin(skCrypt("CSGO-Trainer"), NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize);
+		ImGui::Begin(skCrypt("##CSGO-Trainer"), NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_AlwaysAutoResize);
 
         if (ImGui::BeginTabBar(skCrypt("##Menu Bar")))
         {
@@ -19,26 +19,18 @@ void Graphics::Menu::Draw()
             }
             if (ImGui::BeginTabItem(skCrypt("Visuals")))
             {
-                ImGui::Checkbox(skCrypt("Box ESP"), &Trainer::ESP::boxStatus);
-                ImGui::SameLine();
-                ImGui::Combo(skCrypt("##Box Type"), &Trainer::ESP::boxType, "Full\0Cornered\0\0");
-                ImGui::ColorEdit3(skCrypt("##Box Color"), Trainer::ESP::boxColor);
+                ImGui::Checkbox(skCrypt("Boxes"), &Trainer::ESP::boxStatus);
+                ImGui::Combo(skCrypt("Mode ##Box"), &Trainer::ESP::boxType, "Full\0Cornered\0\0");
 
-                ImGui::Checkbox(skCrypt("Snapline ESP"), &Trainer::ESP::snaplineStatus);
-                ImGui::SameLine();
-                ImGui::Combo(skCrypt("##Snapline Type"), &Trainer::ESP::snaplineType, "Bottom\0Middle\0Top\0\0");
-                ImGui::ColorEdit3(skCrypt("##Snapline Color"), Trainer::ESP::snaplineColor);
+                ImGui::Checkbox(skCrypt("Snaplines"), &Trainer::ESP::snaplineStatus);
+                ImGui::Combo(skCrypt("Mode ##Snapline"), &Trainer::ESP::snaplineType, "Bottom\0Middle\0Top\0\0");
 
-                ImGui::Checkbox(skCrypt("Health ESP"), &Trainer::ESP::healthStatus);
-                ImGui::SameLine();
-                ImGui::Combo(skCrypt("##Health Type"), &Trainer::ESP::healthType, "Bar\0Text\0\0");
-                ImGui::ColorEdit3(skCrypt("##Health Color"), Trainer::ESP::healthColor);
+                ImGui::Checkbox(skCrypt("Health"), &Trainer::ESP::healthStatus);
+                ImGui::Combo(skCrypt("Mode ##Health"), &Trainer::ESP::healthType, "Bar\0Text\0\0");
 
-                ImGui::Checkbox(skCrypt("Distance ESP"), &Trainer::ESP::distanceStatus);
-                ImGui::ColorEdit3(skCrypt("##Distance Color"), Trainer::ESP::distanceColor);
+                ImGui::Checkbox(skCrypt("Distance"), &Trainer::ESP::distanceStatus);
 
-                ImGui::Checkbox(skCrypt("Head ESP"), &Trainer::ESP::headStatus);
-                ImGui::ColorEdit3(skCrypt("##Head Color"), Trainer::ESP::headColor);
+                ImGui::Checkbox(skCrypt("Heads"), &Trainer::ESP::headStatus);;
                 ImGui::EndTabItem();
             }
             if (ImGui::BeginTabItem(skCrypt("Miscellaneous")))
