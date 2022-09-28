@@ -6,8 +6,7 @@
 
 void Trainer::ESP::Run() 
 {
-		// Ranked: 10, Casual: 20, Community: ~32~
-	for (int i = 1; i < 32; i++)
+	for (int i = 1; i < 32; i++) // Ranked: 10, Casual: 20, Community: ~32~
 	{
 		DWORD localPlayer = Game::GetLocalPlayer();
 		DWORD localEntity = Game::GetLocalEntity(i);
@@ -32,6 +31,9 @@ void Trainer::ESP::Run()
 		Math::Vector3 entityOrigin2D = Math::WorldToScreen(entityOrigin, viewMatrix);
 		Math::Vector3 entityHead2D = Math::WorldToScreen(entityHead, viewMatrix);
 
+		// Get entity's team number, for CT/T dependent coloring
+		int entityTeam = Memory::Read<int>(localEntity + Game::Offsets::m_iTeamNum);
+
 		// Prevents drawing behind us
 		if (entityOrigin2D.z < 0.01f || entityHead2D.z < 0.01f)
 			continue;
@@ -44,18 +46,21 @@ void Trainer::ESP::Run()
 		// Box ESP
 		if (Trainer::ESP::boxStatus == true)
 		{
-			// Sync our background color to border color
-			float boxBackgroundColor[4] = { boxColor[0], boxColor[1], boxColor[2], 0.2f };
+			if (entityTeam == 2) // If entity is a terrorist
+			{
+				// Sync our background color to border color
+				float boxBackgroundColor[4] = { boxColorT[0], boxColorT[1], boxColorT[2], 0.2f };
 
-			if (Trainer::ESP::boxType == 0)
-			{
 				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height / 0.9, boxBackgroundColor);
-				Graphics::Rendering::DrawRect(x - width / 2, y, width, height / 0.9, Trainer::ESP::boxColor, 1);
+				Graphics::Rendering::DrawRect(x - width / 2, y, width, height / 0.9, Trainer::ESP::boxColorT, 1);
 			}
-			else if (Trainer::ESP::boxType == 1)
+			else if (entityTeam == 3) // If entity is a counter-terrorist
 			{
+				// Sync our background color to border color
+				float boxBackgroundColor[4] = { boxColorCT[0], boxColorCT[1], boxColorCT[2], 0.2f };
+
 				Graphics::Rendering::DrawFilledRect(x - width / 2, y, width, height / 0.9, boxBackgroundColor);
-				Graphics::Rendering::DrawCornerBox(x - width / 2, y, width, height / 0.9, 1, Trainer::ESP::boxColor);
+				Graphics::Rendering::DrawRect(x - width / 2, y, width, height / 0.9, Trainer::ESP::boxColorCT, 1);
 			}
 		}
 
@@ -63,7 +68,16 @@ void Trainer::ESP::Run()
 		if (Trainer::ESP::snaplineStatus == true)
 		{
 			if (Trainer::ESP::snaplineType == 0) // Bottom
-				Graphics::Rendering::DrawLine(Graphics::Rendering::gameWidth / 2, Graphics::Rendering::gameHeight, x, y, Trainer::ESP::snaplineColor, 1);
+			{
+				if (entityTeam == 2) // If entity is a terrorist
+				{
+					Graphics::Rendering::DrawLine(Graphics::Rendering::gameWidth / 2, Graphics::Rendering::gameHeight, x, y, Trainer::ESP::snaplineColorT, 1);
+				}
+				else if (entityTeam == 3) // If entity is a counter-terrorist
+				{
+					Graphics::Rendering::DrawLine(Graphics::Rendering::gameWidth / 2, Graphics::Rendering::gameHeight, x, y, Trainer::ESP::snaplineColorCT, 1);
+				}
+			}
 			else if (Trainer::ESP::snaplineType == 1) // Middle
 			{
 				float radius = 45.f;
@@ -83,57 +97,68 @@ void Trainer::ESP::Run()
 					y3 = radius * (-sin(angle)) + Graphics::Rendering::gameHeight / 2;
 				}
 
-				if (sqrt(a * a + b * b) >= radius)											// If hypotenuse is greater than or equal to raidus, draw snaplines
-					Graphics::Rendering::DrawLine(entityHead2D.x, entityHead2D.y, x3, y3, Trainer::ESP::snaplineColor, 1);
+				if (sqrt(a * a + b * b) >= radius && entityTeam == 2) // If entity is a terrorist
+				{
+					Graphics::Rendering::DrawLine(entityHead2D.x, entityHead2D.y, x3, y3, Trainer::ESP::snaplineColorT, 1);
+				}
+				else if (sqrt(a * a + b * b) >= radius && entityTeam == 3)  // If entity is a counter-terrorist
+				{
+					Graphics::Rendering::DrawLine(entityHead2D.x, entityHead2D.y, x3, y3, Trainer::ESP::snaplineColorCT, 1);
+				}
 			}
-			else if (Trainer::ESP::snaplineType == 2) // Top
-				Graphics::Rendering::DrawLine(Graphics::Rendering::gameWidth / 2, 0, entityHead2D.x, entityHead2D.y, Trainer::ESP::snaplineColor, 1);
 		}
 
-		// Health ESP
-		if (Trainer::ESP::healthStatus == true) 
+		// Healthbar ESP
+		if (Trainer::ESP::healthbarStatus == true) 
 		{
 			int entityHealth = Memory::Read<int>(localEntity + Game::Offsets::m_iHealth);
+			float healthFrac = static_cast<float>(entityHealth) / 100;
 
-			if (Trainer::ESP::healthType == 0) // Healthbar
-			{
-				float healthFrac = static_cast<float>(entityHealth) / 100;
-				float healthbarBackgroundColor[4] = { 0, 0, 0, 0.2 };
-				float healthbarBackgroundColor2[4] = { 0, 0, 0, 1.0 };
-				float healthbarColor[4] = { 1 - healthFrac, healthFrac, 0, 1 };
+			float healthbarBackgroundColor[4] = { 0, 0, 0, 0.2 };
+			float healthbarBackgroundColor2[4] = { 0, 0, 0, 1.0 };
+			float healthbarColor[4] = { 1 - healthFrac, healthFrac, 0, 1 };
 
-				// Don't ask, don't tell.
-
-				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 500.f + 1.9f, height, healthbarBackgroundColor);
-				Graphics::Rendering::DrawRect(x + width / 1.9f, y, width / 500.f + 1.9f, height, healthbarBackgroundColor2, 1.f);
-				Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 500.f + 1.9f, height * healthFrac, healthbarColor);
-			}
-			else if (Trainer::ESP::healthType == 1) // Health text
-			{
-				char strEntityHealth[64];
-				sprintf_s(strEntityHealth, "[%0.fhp]", (float)entityHealth);
-
-				Graphics::Rendering::DrawString(entityOrigin2D.x - width / 1.7f, entityOrigin2D.y + 13, Trainer::ESP::healthColor, strEntityHealth);
-			}
+			// Don't ask, don't tell.
+			Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 500.f + 1.9f, height / 0.9, healthbarBackgroundColor);
+			Graphics::Rendering::DrawRect(x + width / 1.9f, y, width / 500.f + 1.9f, height / 0.9, healthbarBackgroundColor2, 1.f);
+			Graphics::Rendering::DrawFilledRect(x + width / 1.9f, y, width / 500.f + 1.9f, height * healthFrac / 0.9, healthbarColor);
 		}
 
 		// Head ESP
 		if (Trainer::ESP::headStatus == true)
 		{
-			// Sync our background color to border color
-			float headBackgroundColor[4] = { headColor[0], headColor[1], headColor[2], 0.1f };
+			if (entityTeam == 2) // If entity is a terrorist
+			{
+				// Sync our background color to border color
+				float headBackgroundColor[4] = { headColorT[0], headColorT[1], headColorT[2], 0.1f };
 
-			Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, headBackgroundColor);
-			Graphics::Rendering::DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, Trainer::ESP::headColor, 0);
+				Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, headBackgroundColor);
+				Graphics::Rendering::DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, Trainer::ESP::headColorT, 0);
+			}
+			else if (entityTeam == 3) // If entity is a counter-terrorist
+			{
+				// Sync our background color to border color
+				float headBackgroundColor[4] = { headColorCT[0], headColorCT[1], headColorCT[2], 0.1f };
+
+				Graphics::Rendering::DrawCircleFilled(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, headBackgroundColor);
+				Graphics::Rendering::DrawCircle(entityHead2D.x, entityHead2D.y, 0.1 - width / 8, Trainer::ESP::headColorCT, 0);
+			}
 		}
 
 		// Distance ESP
 		if (Trainer::ESP::distanceStatus == true)
 		{
 			char strEntityDistance[64];
-			sprintf_s(strEntityDistance, "[%0.fm]", sqrt(pow(playerOrigin.x - entityOrigin.x, 2) + pow(playerOrigin.y - entityOrigin.y, 2) + pow(playerOrigin.z - entityOrigin.z, 2)) * 0.0254f);
+			sprintf_s(strEntityDistance, skCrypt("[%0.fm]"), sqrt(pow(playerOrigin.x - entityOrigin.x, 2) + pow(playerOrigin.y - entityOrigin.y, 2) + pow(playerOrigin.z - entityOrigin.z, 2)) * 0.0254f);
 
-			Graphics::Rendering::DrawString(entityOrigin2D.x - width / 1.7f, entityOrigin2D.y, Trainer::ESP::distanceColor, strEntityDistance);
+			if (entityTeam == 2) // If entity is a terrorist
+			{
+				Graphics::Rendering::DrawString(entityOrigin2D.x - width / 1.7f, entityOrigin2D.y, Trainer::ESP::distanceColorT, strEntityDistance);
+			}
+			else if (entityTeam == 3) // If entity is a counter-terrorist
+			{
+				Graphics::Rendering::DrawString(entityOrigin2D.x - width / 1.7f, entityOrigin2D.y, Trainer::ESP::distanceColorCT, strEntityDistance);
+			}
 		}
 	}
 }

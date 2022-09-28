@@ -9,21 +9,22 @@ namespace Trainer
 		void Run();
 
 		inline bool boxStatus = false; // FALSE: Off, TRUE: On
-		inline float boxColor[4] = { 1, 0, 0, 1 };
-		inline int boxType = 0; // 0: Full, 1: Cornered
+		inline float boxColorCT[4] = { 0.3f, 0.5f, 0.7f, 1 };
+		inline float boxColorT[4] = { 0.9f, 0.75f, 0.4f, 1 };
 
 		inline bool snaplineStatus = false; // FALSE: Off, TRUE: On
-		inline float snaplineColor[4] = { 1, 0, 0, 1 };
-		inline int snaplineType = 0; // 0: Bottom, 1: Middle, 2: Top
+		inline float snaplineColorCT[4] = { 0.3f, 0.5f, 0.7f, 1 };
+		inline float snaplineColorT[4] = { 0.9f, 0.75f, 0.4f, 1 };
+		inline int snaplineType = 0; // 0: Bottom, 1: Middle
 
-		inline bool healthStatus = false; // FALSE: Off, TRUE: On
-		inline int healthType = 0; // 0: Bar, 1: Text
-		inline float healthColor[4] = { 1, 0, 0, 1 };
+		inline bool healthbarStatus = false; // FALSE: Off, TRUE: On
 
 		inline bool headStatus = false; // FALSE: Off, TRUE: On
-		inline float headColor[4] = { 1, 0, 0, 1 };
+		inline float headColorCT[4] = { 0.3f, 0.5f, 0.7f, 1 };
+		inline float headColorT[4] = { 0.9f, 0.75f, 0.4f, 1 };
 
 		inline bool distanceStatus = false; // FALSE: Off, TRUE: On
-		inline float distanceColor[4] = { 1, 0, 0, 1 };
+		inline float distanceColorCT[4] = { 0.3f, 0.5f, 0.7f, 1 };
+		inline float distanceColorT[4] = { 0.9f, 0.75f, 0.4f, 1 };
 	}
 }

@@ -16,7 +16,14 @@ void Trainer::Triggerbot::Run()
 			if (!Game::TeamCheck(crosshairId - 1))
 				continue;
 
-			if (GetAsyncKeyState(Trainer::Triggerbot::hotkey) && crosshairId > 0 && crosshairId < 32)
+			if (!Trainer::Triggerbot::hotkey && crosshairId > 0 && crosshairId < 32) // If Triggerbot is set to Always On
+			{
+				std::this_thread::sleep_for(std::chrono::milliseconds((int)Trainer::Triggerbot::delay));
+
+				mouse_event(MOUSEEVENTF_LEFTDOWN, NULL, NULL, 0, 0);
+				mouse_event(MOUSEEVENTF_LEFTUP, NULL, NULL, 0, 0);
+			}
+			else if (GetAsyncKeyState(Trainer::Triggerbot::hotkey) && crosshairId > 0 && crosshairId < 32) // If Triggerbot is bound to a hotkey
 			{
 				std::this_thread::sleep_for(std::chrono::milliseconds((int)Trainer::Triggerbot::delay));
 

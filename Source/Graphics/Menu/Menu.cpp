@@ -20,13 +20,11 @@ void Graphics::Menu::Draw()
             if (ImGui::BeginTabItem(skCrypt("Visuals")))
             {
                 ImGui::Checkbox(skCrypt("Boxes"), &Trainer::ESP::boxStatus);
-                ImGui::Combo(skCrypt("Mode ##Box"), &Trainer::ESP::boxType, "Full\0Cornered\0\0");
 
                 ImGui::Checkbox(skCrypt("Snaplines"), &Trainer::ESP::snaplineStatus);
-                ImGui::Combo(skCrypt("Mode ##Snapline"), &Trainer::ESP::snaplineType, "Bottom\0Middle\0Top\0\0");
+                ImGui::Combo(skCrypt("##Snapline Mode"), &Trainer::ESP::snaplineType, skCrypt("Bottom\0Middle\0\0"));
 
-                ImGui::Checkbox(skCrypt("Health"), &Trainer::ESP::healthStatus);
-                ImGui::Combo(skCrypt("Mode ##Health"), &Trainer::ESP::healthType, "Bar\0Text\0\0");
+                ImGui::Checkbox(skCrypt("Healthbars"), &Trainer::ESP::healthbarStatus);
 
                 ImGui::Checkbox(skCrypt("Distance"), &Trainer::ESP::distanceStatus);
 
@@ -36,27 +34,8 @@ void Graphics::Menu::Draw()
             if (ImGui::BeginTabItem(skCrypt("Miscellaneous")))
             {
                 ImGui::Checkbox(skCrypt("Triggerbot"), &Trainer::Triggerbot::status);
-                ImGui::SliderFloat(skCrypt("Delay"), &Trainer::Triggerbot::delay, 0.f, 300.f, "%.3fms");
-                ImGui::EndTabItem();
-            }
-            if (ImGui::BeginTabItem(skCrypt("Debug")))
-            {
-                ImGui::Text(skCrypt("Trainer FPS: %0.f"), ImGui::GetIO().Framerate);
-                ImGui::Text(skCrypt("Trainer Uptime: %0.ds"), (clock() - Graphics::Menu::clockStart) / CLOCKS_PER_SEC);
-
-                ImGui::Separator();
-
-                ImGui::Text(skCrypt("Process Identifier: %0.d"), Game::processId);
-                ImGui::Text(skCrypt("Process Handle: 0x%x"), Game::handle);
-                ImGui::Text(skCrypt("Process Width/Height: %0.f, %0.f"), Graphics::Rendering::gameWidth, Graphics::Rendering::gameHeight);
-                ImGui::Text(skCrypt("Process X/Y: %0.f, %0.f"), Graphics::Rendering::gameX, Graphics::Rendering::gameY);
-
-                ImGui::Separator();
-
-                if (ImGui::Button(skCrypt("Unload Trainer")))
-                {
-                    exit(0);
-                }
+                ImGui::SliderFloat(skCrypt("##Triggerbot Delay"), &Trainer::Triggerbot::delay, 0.f, 300.f, skCrypt("%.3fms"));
+                ImGui::Combo(skCrypt("##Triggerbot Hotkey"), &Trainer::Triggerbot::hotkey, skCrypt("Always On\0Left Mouse\0Right Mouse\0Pause/Break Key\0Middle Mouse\0X1 Mouse\0X2 Mouse\0\0"));
 
                 ImGui::EndTabItem();
             }

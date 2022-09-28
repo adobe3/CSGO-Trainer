@@ -22,11 +22,11 @@ namespace Game
 		bool Update();
 
 		inline DWORD dwLocalPlayer = 0xDC14CC;
-		inline DWORD dwEntityList = 0x4DDD91C;
+		inline DWORD dwEntityList = 0x4DDD93C;
 		inline DWORD m_bDormant = 0xED;
 		inline DWORD m_iHealth = 0x100;
 		inline DWORD m_iTeamNum = 0xF4;
-		inline DWORD dwViewMatrix = 0x4DCF234;
+		inline DWORD dwViewMatrix = 0x4DCF254;
 		inline DWORD m_vecOrigin = 0x138;
 		inline DWORD m_iCrosshairId = 0x11838;
 		inline DWORD m_dwBoneMatrix = 0x26A8;
