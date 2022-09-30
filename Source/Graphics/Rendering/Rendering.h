@@ -2,15 +2,6 @@
 
 #include "../../Stdafx.h"
 
-#define D2DOV_REQUIRE_FOREGROUND	(1 << 0)
-#define D2DOV_DRAW_FPS				(1 << 1)
-#define D2DOV_VSYNC					(1 << 2)
-#define D2DOV_FONT_CALIBRI			(1 << 3)
-#define D2DOV_FONT_ARIAL			(1 << 4)
-#define D2DOV_FONT_COURIER			(1 << 5)
-#define D2DOV_FONT_GABRIOLA			(1 << 6)
-#define D2DOV_FONT_IMPACT			(1 << 7)
-
 namespace Graphics
 {
 	namespace Rendering

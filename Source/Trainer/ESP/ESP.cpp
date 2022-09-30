@@ -18,7 +18,7 @@ void Trainer::ESP::Run()
 			continue;
 
 		// Get our view matrix
-		Math::view_matrix_t viewMatrix = Memory::Read<Math::view_matrix_t>(Game::client + Game::Offsets::dwViewMatrix);
+		Math::ViewMatrix viewMatrix = Memory::Read<Math::ViewMatrix>(Game::client + Game::Offsets::dwViewMatrix);
 
 		// Get our players origin, used for 2D Distance
 		Math::Vector3 playerOrigin = Memory::Read<Math::Vector3>(localPlayer + Game::Offsets::m_vecOrigin);

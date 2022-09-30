@@ -9,6 +9,5 @@ namespace Graphics
 		void Draw();
 
 		inline bool status = true;
-		inline clock_t clockStart, clockEnd, clockElapsed;
 	}
 }

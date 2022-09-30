@@ -8,13 +8,6 @@
 #include <thread>
 #include <string>
 #include <dwmapi.h>
-#include <fstream>
-#include <comdef.h>
-#include <ctime>
-#include <math.h>
-#include <time.h>
-#include <cmath>
-#include <psapi.h>
 #include <d3d9.h>
 
 #include "../Dependencies/skCrypter/skCrypter.h"

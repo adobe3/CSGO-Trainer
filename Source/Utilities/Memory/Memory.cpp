@@ -1,5 +1,4 @@
 #include "Memory.h"
-#include "../Logging/Logging.h"
 #include "../../Game/Game.h"
 
 DWORD Memory::GetProcessId(const char* windowTitle) 
@@ -9,7 +8,10 @@ DWORD Memory::GetProcessId(const char* windowTitle)
     HWND hwnd = FindWindowA(NULL, windowTitle);
 
     if (!hwnd)
-        Logging::LogErrorMB(skCrypt("Failed to locate process identifier, please make sure the target application is running."));
+    {
+        MessageBoxA(NULL, skCrypt("Failed to locate process identifier, please make sure the target application is running."), skCrypt("Fatal Error"), MB_OK | MB_ICONERROR);
+        exit(0);
+    }
 
     GetWindowThreadProcessId(hwnd, &processId);
 
@@ -41,35 +43,6 @@ uintptr_t Memory::GetModuleAddress(DWORD processId, const wchar_t* moduleName)
     CloseHandle(hSnap);
 
     return modBaseAddr;
-}
-
-void Memory::GetWindow(const char* windowTitle, HWND& hwnd, int& width, int& height, int& x, int& y) 
-{
-    hwnd = FindWindowA(NULL, windowTitle);
-
-    if (!hwnd)
-        Logging::LogErrorMB(skCrypt("Failed to locate the target window, please make sure the application is running."));
-
-    RECT RECT;
-    GetWindowRect(hwnd, &RECT);
-
-    width = RECT.right - RECT.left;
-    height = RECT.bottom - RECT.top;
-    x = RECT.left;
-    y = RECT.top;
-}
-
-std::string Memory::GetRandomString(int len) 
-{
-    srand(time(NULL));
-    std::string str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    std::string newstr;
-    int pos;
-    while (newstr.size() != len) {
-        pos = ((rand() % (str.size() - 1)));
-        newstr += str.substr(pos, 1);
-    }
-    return newstr;
 }
 
 std::string Memory::StringToUTF8(const std::string& str) 

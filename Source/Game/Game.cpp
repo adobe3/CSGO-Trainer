@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "../Utilities/Memory/Memory.h"
-#include "../Utilities/Logging/Logging.h"
 
 DWORD Game::GetLocalPlayer()
 {

@@ -1,17 +1,12 @@
 #include "Stdafx.h"
 #include "Utilities/Memory/Memory.h"
-#include "Utilities/Logging/Logging.h"
 #include "Game/Game.h"
 #include "Graphics/Rendering/Rendering.h"
 #include "Graphics/Menu/Menu.h"
 #include "Trainer/Triggerbot/Triggerbot.h"
-#include "Trainer/Aimbot/Aimbot.h"
 
 DWORD WINAPI Initialize()
 {
-    // Begin program uptime clock
-    Graphics::Menu::clockStart = clock();
-
     // Hide Windows Media Player window
     ShowWindow(FindWindowA(NULL, skCrypt("Windows Media Player")), SW_HIDE);
 
@@ -27,18 +22,24 @@ DWORD WINAPI Initialize()
     Game::engine = Memory::GetModuleAddress(Game::processId, skCrypt(L"engine.dll"));
 
     if (!Game::client || !Game::engine)
-        Logging::LogErrorMB(skCrypt("Failed to locate specified modules, please make sure the target application is running."));
+    {
+        MessageBoxA(NULL, skCrypt("Failed to locate specified modules, please make sure the target application is running."), skCrypt("Fatal Error"), MB_OK | MB_ICONERROR);
+        exit(0);
+    }
 
     if (!Game::Offsets::Update())
-        Logging::LogErrorMB(skCrypt("Failed to update offsets."));
+    {
+        MessageBoxA(NULL, skCrypt("Failed to update offsets."), skCrypt("Fatal Error"), MB_OK | MB_ICONERROR);
+        exit(0);
+    }
 
-    // Create all our major threads
-    std::thread a(&Graphics::Rendering::Begin); // Graphics/ESP thread
+    // Setup Graphics/ESP
+    std::thread a(&Graphics::Rendering::Begin);
     a.detach();
-    std::thread b(&Trainer::Triggerbot::Run); // Triggerbot thread
+    
+    // Setup Triggerbot
+    std::thread b(&Trainer::Triggerbot::Run);
     b.detach();
-    std::thread c(&Trainer::Aimbot::Run); // Aimbot thread
-    c.detach();
 
     // Exit trainer if CS:GO has been closed 
     while (FindWindowA(NULL, skCrypt("Counter-Strike: Global Offensive - Direct3D 9")))

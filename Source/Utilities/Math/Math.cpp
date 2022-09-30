@@ -1,6 +1,6 @@
 #include "Math.h"
 
- Math::Vector3 Math::WorldToScreen(const struct Vector3 pos, struct view_matrix_t matrix) 
+ Math::Vector3 Math::WorldToScreen(const struct Vector3 pos, struct ViewMatrix matrix)
  {
     Vector3 out;
     float _x = matrix.matrix[0] * pos.x + matrix.matrix[1] * pos.y + matrix.matrix[2] * pos.z + matrix.matrix[3];

@@ -155,10 +155,8 @@
     <ClCompile Include="Source\Graphics\Menu\Menu.cpp" />
     <ClCompile Include="Source\Graphics\Rendering\Rendering.cpp" />
     <ClCompile Include="Source\Main.cpp" />
-    <ClCompile Include="Source\Trainer\Aimbot\Aimbot.cpp" />
     <ClCompile Include="Source\Trainer\ESP\ESP.cpp" />
     <ClCompile Include="Source\Trainer\Triggerbot\Triggerbot.cpp" />
-    <ClCompile Include="Source\Utilities\Logging\Logging.cpp" />
     <ClCompile Include="Source\Utilities\Math\Math.cpp" />
     <ClCompile Include="Source\Utilities\Memory\Memory.cpp" />
   </ItemGroup>
@@ -176,10 +174,8 @@
     <ClInclude Include="Source\Graphics\Menu\Menu.h" />
     <ClInclude Include="Source\Graphics\Rendering\Rendering.h" />
     <ClInclude Include="Source\Stdafx.h" />
-    <ClInclude Include="Source\Trainer\Aimbot\Aimbot.h" />
     <ClInclude Include="Source\Trainer\ESP\ESP.h" />
     <ClInclude Include="Source\Trainer\Triggerbot\Triggerbot.h" />
-    <ClInclude Include="Source\Utilities\Logging\Logging.h" />
     <ClInclude Include="Source\Utilities\Math\Math.h" />
     <ClInclude Include="Source\Utilities\Memory\Memory.h" />
   </ItemGroup>

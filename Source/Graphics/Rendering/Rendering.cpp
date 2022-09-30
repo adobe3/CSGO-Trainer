@@ -227,7 +227,7 @@ bool DirectXInit() {
 	ImGui::GetIO().WantCaptureMouse || ImGui::GetIO().WantTextInput || ImGui::GetIO().WantCaptureKeyboard;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-	ImGui::StyleColorsDark();
+	ImGui::StyleColorsBlack2();
 
 	ImGui_ImplWin32_Init(OverlayWindow::Hwnd);
 	ImGui_ImplDX9_Init(DirectX9Interface::pDevice);
@@ -271,8 +271,10 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 	return 0;
 }
 
-void SetupWindow() {
-	OverlayWindow::WindowClass = {
+void SetupWindow() 
+{
+	OverlayWindow::WindowClass = 
+	{
 		sizeof(WNDCLASSEX), 0, WinProc, 0, 0, nullptr, LoadIcon(nullptr, IDI_APPLICATION), LoadCursor(nullptr, IDC_ARROW), nullptr, nullptr, (LPCWSTR)OverlayWindow::Name, LoadIcon(nullptr, IDI_APPLICATION)
 	};
 
@@ -321,25 +323,13 @@ void Graphics::Rendering::Begin()
 			Graphics::Rendering::gameX = TempRect.left;
 			Graphics::Rendering::gameY = TempRect.top;
 
-			char TempTitle[MAX_PATH];
-			GetWindowText(Process::Hwnd, (LPWSTR)TempTitle, sizeof(TempTitle));
-			Process::Title = TempTitle;
-
-			char TempClassName[MAX_PATH];
-			GetClassName(Process::Hwnd, (LPWSTR)TempClassName, sizeof(TempClassName));
-			Process::ClassName = TempClassName;
-
-			char TempPath[MAX_PATH];
-			GetModuleFileNameEx(Process::Handle, NULL, (LPWSTR)TempPath, sizeof(TempPath));
-			Process::Path = TempPath;
-
 			WindowFocus = true;
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 	}
 
-	OverlayWindow::Name = Memory::GetRandomString(10).c_str();
+	OverlayWindow::Name = "Window";
 
 	SetupWindow();
 	DirectXInit();
