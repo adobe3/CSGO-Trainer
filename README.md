@@ -10,14 +10,14 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Optimal preformance with less than x.x% average CPU usage
 
 ## Compilation & Runtime Instructions:
-* Install [DirectX Software Development Kit](https://www.microsoft.com/en-us/download/confirmation.aspx?id=6812)
+* Install [Microsoft Visual Studio](https://visualstudio.microsoft.com/vs/community/) w/ "Desktop Development with C++" package
 * Compile CSGO-Trainer.sln as Release/x86
 * Run Counter-Strike: Global Offensive with "-insecure" launch option
 * Set the games display mode as "Fullscreen Windowed"
 * Run CSGO-Trainer.bat as administrator
-* Navigate the menu with the UP, DOWN, LEFT, & RIGHT arrow keys, toggle with the INSERT key
 
 ## Credits:
+* [ocornut](https://github.com/ocornut) for [Dear ImGui](https://github.com/ocornut/imgui)
 * [inc-Majdev](https://github.com/inc-Majdev) for [ImGuiExternal](https://www.unknowncheats.me/forum/d3d-tutorials-and-source/457308-imgui-external.html)
 * [skadro-official](https://github.com/skadro-official) for [skCrypter](https://github.com/skadro-official/skCrypter)
 
