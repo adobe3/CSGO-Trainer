@@ -23,3 +23,6 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * [skadro-official](https://github.com/skadro-official) for [skCrypter](https://github.com/skadro-official/skCrypter)
 
 ## Media:
+![Media 1](https://imgur.com/a/5ZeAkns)
+![Media 2](https://imgur.com/a/ygOLBGT)
+![Media 3](https://imgur.com/a/UzAruxx)
