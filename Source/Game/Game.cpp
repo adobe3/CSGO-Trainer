@@ -55,9 +55,3 @@ Math::Vector3 Game::GetEntityBone(DWORD localEntity, int boneId)
 
 	return entityBone;
 }
-
-bool Game::Offsets::Update() 
-{
-
-	return true;
-}

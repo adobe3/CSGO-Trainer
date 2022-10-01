@@ -10,6 +10,9 @@ void Graphics::Menu::Draw()
 	{
 		ImGui::Begin(skCrypt("##CSGO-Trainer"), NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoTitleBar);
 
+        ImGui::Text(skCrypt("Toggle Display: [INSERT]"));
+        ImGui::Separator();
+
         ImGui::Text(skCrypt("Visuals"));
 
         ImGui::Checkbox(skCrypt("Boxes"), &Trainer::ESP::boxStatus);

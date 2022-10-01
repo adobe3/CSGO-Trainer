@@ -14,13 +14,10 @@ namespace Game
 	inline HANDLE handle;
 	inline DWORD processId;
 	inline DWORD client;
-	inline DWORD engine;
 
 	// Update offsets from here: https://github.com/frk1/hazedumper/blob/master/csgo.hpp
 	namespace Offsets 
 	{
-		bool Update();
-
 		inline DWORD dwLocalPlayer = 0xDC14CC;
 		inline DWORD dwEntityList = 0x4DDD93C;
 		inline DWORD m_bDormant = 0xED;

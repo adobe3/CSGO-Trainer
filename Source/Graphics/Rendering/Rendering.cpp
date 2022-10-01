@@ -4,7 +4,8 @@
 #include "../../Trainer/ESP/ESP.h"
 #include "../Menu/Menu.h"
 
-namespace Process {
+namespace Process 
+{
 	DWORD ID;
 	HANDLE Handle;
 	HWND Hwnd;
@@ -20,13 +21,15 @@ namespace Process {
 	LPCSTR Path;
 }
 
-namespace OverlayWindow {
+namespace OverlayWindow 
+{
 	WNDCLASSEX WindowClass;
 	HWND Hwnd;
 	LPCSTR Name;
 }
 
-namespace DirectX9Interface {
+namespace DirectX9Interface 
+{
 	IDirect3D9Ex* Direct3D9 = NULL;
 	IDirect3DDevice9Ex* pDevice = NULL;
 	D3DPRESENT_PARAMETERS pParams = { NULL };
@@ -34,7 +37,8 @@ namespace DirectX9Interface {
 	MSG Message = { NULL };
 }
 
-void Graphics::Rendering::DrawStrokeString(int x, int y, float color[], const char* str) {
+void Graphics::Rendering::DrawStrokeString(int x, int y, float color[], const char* str) 
+{
 	ImFont a;
 	std::string utf_8_1 = std::string(str);
 	std::string utf_8_2 = Memory::StringToUTF8(utf_8_1);
@@ -45,42 +49,51 @@ void Graphics::Rendering::DrawStrokeString(int x, int y, float color[], const ch
 	ImGui::GetForegroundDrawList()->AddText(ImVec2(x, y), ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )), utf_8_2.c_str());
 }
 
-void Graphics::Rendering::DrawString(int x, int y, float color[], const char* str) {
+void Graphics::Rendering::DrawString(int x, int y, float color[], const char* str) 
+{
 	ImFont a;
 	std::string utf_8_1 = std::string(str);
 	std::string utf_8_2 = Memory::StringToUTF8(utf_8_1);
 	ImGui::GetForegroundDrawList()->AddText(ImVec2(x, y), ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )), utf_8_2.c_str());
 }
 
-void Graphics::Rendering::DrawRect(int x, int y, int w, int h, float color[], int thickness) {
+void Graphics::Rendering::DrawRect(int x, int y, int w, int h, float color[], int thickness) 
+{
 	ImGui::GetForegroundDrawList()->AddRect(ImVec2(x, y), ImVec2(x + w, y + h), ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )), 0, 0, thickness);
 }
 
-void Graphics::Rendering::DrawFilledRect(int x, int y, int w, int h, float color[]) {
+void Graphics::Rendering::DrawFilledRect(int x, int y, int w, int h, float color[]) 
+{
 	ImGui::GetForegroundDrawList()->AddRectFilled(ImVec2(x, y), ImVec2(x + w, y + h), ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )), 0, 0);
 }
 
-void Graphics::Rendering::DrawCircleFilled(int x, int y, int radius, float color[]) {
+void Graphics::Rendering::DrawCircleFilled(int x, int y, int radius, float color[]) 
+{
 	ImGui::GetForegroundDrawList()->AddCircleFilled(ImVec2(x, y), radius, ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )));
 }
 
-void Graphics::Rendering::DrawCircle(int x, int y, int radius, float color[], int segments) {
+void Graphics::Rendering::DrawCircle(int x, int y, int radius, float color[], int segments) 
+{
 	ImGui::GetForegroundDrawList()->AddCircle(ImVec2(x, y), radius, ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )), segments);
 }
 
-void Graphics::Rendering::DrawTriangle(int x1, int y1, int x2, int y2, int x3, int y3, float color[], float thickness) {
+void Graphics::Rendering::DrawTriangle(int x1, int y1, int x2, int y2, int x3, int y3, float color[], float thickness) 
+{
 	ImGui::GetForegroundDrawList()->AddTriangle(ImVec2(x1, y1), ImVec2(x2, y2), ImVec2(x3, y3), ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )), thickness);
 }
 
-void Graphics::Rendering::DrawTriangleFilled(int x1, int y1, int x2, int y2, int x3, int y3, float color[]) {
+void Graphics::Rendering::DrawTriangleFilled(int x1, int y1, int x2, int y2, int x3, int y3, float color[]) 
+{
 	ImGui::GetForegroundDrawList()->AddTriangleFilled(ImVec2(x1, y1), ImVec2(x2, y2), ImVec2(x3, y3), ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )));
 }
 
-void Graphics::Rendering::DrawLine(int x1, int y1, int x2, int y2, float color[], int thickness) {
+void Graphics::Rendering::DrawLine(int x1, int y1, int x2, int y2, float color[], int thickness) 
+{
 	ImGui::GetForegroundDrawList()->AddLine(ImVec2(x1, y1), ImVec2(x2, y2), ImGui::ColorConvertFloat4ToU32(ImVec4(color[0]  , color[1]  , color[2]  , color[3]  )), thickness);
 }
 
-void Graphics::Rendering::DrawCornerBox(int x, int y, int w, int h, int borderPx, float color[]) {
+void Graphics::Rendering::DrawCornerBox(int x, int y, int w, int h, int borderPx, float color[]) 
+{
 	DrawFilledRect(x + borderPx, y, w / 3, borderPx, color);
 	DrawFilledRect(x + w - w / 3 + borderPx, y, w / 3, borderPx, color);
 	DrawFilledRect(x, y, borderPx, h / 3, color);
@@ -100,7 +113,7 @@ void Render()
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	ImGui::GetIO().MouseDrawCursor = Graphics::Menu::status;
+	// ImGui::GetIO().MouseDrawCursor = Graphics::Menu::status;
 
 	// Menu
 	Graphics::Menu::Draw();
@@ -116,31 +129,38 @@ void Render()
 
 	DirectX9Interface::pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(0, 0, 0, 0), 1.0f, 0);
 
-	if (DirectX9Interface::pDevice->BeginScene() >= 0) {
+	if (DirectX9Interface::pDevice->BeginScene() >= 0) 
+	{
 		ImGui::Render();
 		ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
 		DirectX9Interface::pDevice->EndScene();
 	}
 
 	HRESULT result = DirectX9Interface::pDevice->Present(NULL, NULL, NULL, NULL);
-	if (result == D3DERR_DEVICELOST && DirectX9Interface::pDevice->TestCooperativeLevel() == D3DERR_DEVICENOTRESET) {
+	if (result == D3DERR_DEVICELOST && DirectX9Interface::pDevice->TestCooperativeLevel() == D3DERR_DEVICENOTRESET) 
+	{
 		ImGui_ImplDX9_InvalidateDeviceObjects();
 		DirectX9Interface::pDevice->Reset(&DirectX9Interface::pParams);
 		ImGui_ImplDX9_CreateDeviceObjects();
 	}
 }
 
-void MainLoop() {
+void MainLoop() 
+{
 	static RECT OldRect;
 	ZeroMemory(&DirectX9Interface::Message, sizeof(MSG));
 
-	while (DirectX9Interface::Message.message != WM_QUIT) {
-		if (PeekMessage(&DirectX9Interface::Message, OverlayWindow::Hwnd, 0, 0, PM_REMOVE)) {
+	while (DirectX9Interface::Message.message != WM_QUIT) 
+	{
+		if (PeekMessage(&DirectX9Interface::Message, OverlayWindow::Hwnd, 0, 0, PM_REMOVE)) 
+		{
 			TranslateMessage(&DirectX9Interface::Message);
 			DispatchMessage(&DirectX9Interface::Message);
 		}
+
 		HWND ForegroundWindow = GetForegroundWindow();
-		if (ForegroundWindow == Process::Hwnd) {
+		if (ForegroundWindow == Process::Hwnd) 
+		{
 			HWND TempProcessHwnd = GetWindow(ForegroundWindow, GW_HWNDPREV);
 			SetWindowPos(OverlayWindow::Hwnd, TempProcessHwnd, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 		}
@@ -163,17 +183,20 @@ void MainLoop() {
 		io.MousePos.x = TempPoint2.x - TempPoint.x;
 		io.MousePos.y = TempPoint2.y - TempPoint.y;
 
-		if (GetAsyncKeyState(0x1)) {
+		if (GetAsyncKeyState(0x1)) 
+		{
 			io.MouseDown[0] = true;
 			io.MouseClicked[0] = true;
 			io.MouseClickedPos[0].x = io.MousePos.x;
 			io.MouseClickedPos[0].x = io.MousePos.y;
 		}
-		else {
+		else 
+		{
 			io.MouseDown[0] = false;
 		}
 
-		if (TempRect.left != OldRect.left || TempRect.right != OldRect.right || TempRect.top != OldRect.top || TempRect.bottom != OldRect.bottom) {
+		if (TempRect.left != OldRect.left || TempRect.right != OldRect.right || TempRect.top != OldRect.top || TempRect.bottom != OldRect.bottom) 
+		{
 			OldRect = TempRect;
 			Process::WindowWidth = TempRect.right;
 			Process::WindowHeight = TempRect.bottom;
@@ -183,23 +206,32 @@ void MainLoop() {
 			DirectX9Interface::pDevice->Reset(&DirectX9Interface::pParams);
 		}
 		Render();
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 	}
+
 	ImGui_ImplDX9_Shutdown();
 	ImGui_ImplWin32_Shutdown();
 	ImGui::DestroyContext();
-	if (DirectX9Interface::pDevice != NULL) {
+
+	if (DirectX9Interface::pDevice != NULL) 
+	{
 		DirectX9Interface::pDevice->EndScene();
 		DirectX9Interface::pDevice->Release();
 	}
-	if (DirectX9Interface::Direct3D9 != NULL) {
+	if (DirectX9Interface::Direct3D9 != NULL) 
+	{
 		DirectX9Interface::Direct3D9->Release();
 	}
+
 	DestroyWindow(OverlayWindow::Hwnd);
 	UnregisterClass(OverlayWindow::WindowClass.lpszClassName, OverlayWindow::WindowClass.hInstance);
 }
 
-bool DirectXInit() {
-	if (FAILED(Direct3DCreate9Ex(D3D_SDK_VERSION, &DirectX9Interface::Direct3D9))) {
+bool DirectXInit() 
+{
+	if (FAILED(Direct3DCreate9Ex(D3D_SDK_VERSION, &DirectX9Interface::Direct3D9))) 
+	{
 		return false;
 	}
 
@@ -211,13 +243,13 @@ bool DirectXInit() {
 	Params.BackBufferFormat = D3DFMT_A8R8G8B8;
 	Params.BackBufferWidth = Process::WindowWidth;
 	Params.BackBufferHeight = Process::WindowHeight;
-	Params.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 	Params.EnableAutoDepthStencil = TRUE;
 	Params.AutoDepthStencilFormat = D3DFMT_D16;
 	Params.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
-	Params.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;
+	Params.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT; // Highest available
 
-	if (FAILED(DirectX9Interface::Direct3D9->CreateDeviceEx(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, OverlayWindow::Hwnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &Params, 0, &DirectX9Interface::pDevice))) {
+	if (FAILED(DirectX9Interface::Direct3D9->CreateDeviceEx(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, OverlayWindow::Hwnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &Params, 0, &DirectX9Interface::pDevice))) 
+	{
 		DirectX9Interface::Direct3D9->Release();
 		return false;
 	}
@@ -237,24 +269,30 @@ bool DirectXInit() {
 }
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-LRESULT CALLBACK WinProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam) {
+
+LRESULT CALLBACK WinProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam) 
+{
 	if (ImGui_ImplWin32_WndProcHandler(hWnd, Message, wParam, lParam))
 		return true;
 
-	switch (Message) {
+	switch (Message) 
+	{
 	case WM_DESTROY:
-		if (DirectX9Interface::pDevice != NULL) {
+		if (DirectX9Interface::pDevice != NULL) 
+		{
 			DirectX9Interface::pDevice->EndScene();
 			DirectX9Interface::pDevice->Release();
 		}
-		if (DirectX9Interface::Direct3D9 != NULL) {
+		if (DirectX9Interface::Direct3D9 != NULL) 
+		{
 			DirectX9Interface::Direct3D9->Release();
 		}
 		PostQuitMessage(0);
 		exit(4);
 		break;
 	case WM_SIZE:
-		if (DirectX9Interface::pDevice != NULL && wParam != SIZE_MINIMIZED) {
+		if (DirectX9Interface::pDevice != NULL && wParam != SIZE_MINIMIZED) 
+		{
 			ImGui_ImplDX9_InvalidateDeviceObjects();
 			DirectX9Interface::pParams.BackBufferWidth = LOWORD(lParam);
 			DirectX9Interface::pParams.BackBufferHeight = HIWORD(lParam);
@@ -279,7 +317,9 @@ void SetupWindow()
 	};
 
 	RegisterClassEx(&OverlayWindow::WindowClass);
-	if (Process::Hwnd) {
+
+	if (Process::Hwnd) 
+	{
 		static RECT TempRect = { NULL };
 		static POINT TempPoint;
 		GetClientRect(Process::Hwnd, &TempRect);
@@ -304,7 +344,8 @@ void Graphics::Rendering::Begin()
 	{
 		DWORD ForegroundWindowProcessID;
 		GetWindowThreadProcessId(GetForegroundWindow(), &ForegroundWindowProcessID);
-		if (GetProcessId(Game::handle) == ForegroundWindowProcessID) {
+		if (GetProcessId(Game::handle) == ForegroundWindowProcessID) 
+		{
 			Process::ID = GetCurrentProcessId();
 			Process::Handle = GetCurrentProcess();
 			Process::Hwnd = GetForegroundWindow();

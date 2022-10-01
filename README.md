@@ -7,11 +7,12 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Compile time string obfuscation
 * External / Internal framework, operating inside the process space of Windows Media Player
 * Various cheats such as Box ESP, Triggerbot, & more
-* Optimal preformance with less than x.x% average CPU usage
+* Optimal preformance with 0.4% CPU usage on average
 
 ## Compilation & Runtime Instructions:
 * Install [Microsoft Visual Studio](https://visualstudio.microsoft.com/vs/community/) w/ "Desktop Development with C++" package
-* Compile CSGO-Trainer.sln as Release/x86
+* Navigate to "Game.h" and update the offsets
+* Compile the solution as Release/x86
 * Run Counter-Strike: Global Offensive with "-insecure" launch option
 * Set the games display mode as "Fullscreen Windowed"
 * Run CSGO-Trainer.bat as administrator
@@ -22,8 +23,3 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * [skadro-official](https://github.com/skadro-official) for [skCrypter](https://github.com/skadro-official/skCrypter)
 
 ## Media:
-
-## TODO:
-* Automatic updater via pattern scanning
-* Improve preformance / memory caching
-* Fix inline variable stuff

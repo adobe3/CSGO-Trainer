@@ -82,7 +82,7 @@ void Trainer::ESP::Run()
 			{
 				float radius = 45.f;
 				float a = entityHead2D.y - Graphics::Rendering::gameHeight / 2;				// Distance between Entity Y and Center Y
-				float b = entityHead2D.x - Graphics::Rendering::gameWidth / 2;				// Distance between Entity X and Center X										// Hypotenuse of entity triangle
+				float b = entityHead2D.x - Graphics::Rendering::gameWidth / 2;				// Distance between Entity X and Center X
 				float x3, y3;
 				float angle = atan(a / b);													// Angle degrees from Center + Entity's right triangle
 
