@@ -6,8 +6,8 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * Direct3D 9 Graphics w/ Dear ImGui
 * Compile time string obfuscation
 * External / Internal framework, operating inside the process space of Windows Media Player
-* Various cheats such as Box ESP, Triggerbot, & more
-* Optimal preformance with 0.4% CPU usage on average
+* Various features such as Box ESP, Triggerbot, & more
+* Optimal performance with 0.4% CPU usage on average
 
 ## Compilation & Runtime Instructions:
 * Install [Microsoft Visual Studio](https://visualstudio.microsoft.com/vs/community/) w/ "Desktop Development with C++" package
@@ -23,6 +23,6 @@ Lightweight & modern trainer for Counter-Strike: Global Offensive
 * [skadro-official](https://github.com/skadro-official) for [skCrypter](https://github.com/skadro-official/skCrypter)
 
 ## Media:
-![Media 1](https://imgur.com/a/5ZeAkns)
-![Media 2](https://imgur.com/a/ygOLBGT)
-![Media 3](https://imgur.com/a/UzAruxx)
+![Media 1](https://i.imgur.com/LH0dF4P.png)
+![Media 2](https://i.imgur.com/lmA3O36.png)
+![Media 3](https://i.imgur.com/I9MHq71.png)
